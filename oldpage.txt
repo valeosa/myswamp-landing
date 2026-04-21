@@ -1,0 +1,42 @@
+'use client'
+
+// useState -> stores a value and lets React re-render the UI when that value changes
+
+import { useState } from 'react'
+
+export default function Home() {
+  const [input, setInput] = useState('') // input = current text, setinput = updates it -> triggers UI update
+    const [tasks, setTasks] = useState<string[]>([]) 
+
+    setTasks([...tasks, input])
+    setInput('')
+  }
+  
+  return (
+    <main className="min-h-screen flex items-center justify-center p-6">
+      <div className="w-full max-w-xl space-y-4">
+
+        <h1 className="text-xl font-semibold">
+          mySwamp (rebuild)
+        </h1>
+
+        <textarea
+          placeholder="dump your tasks..."
+          value={input}
+          onChange={(e) => setInput(e.target.value)} // onChange → updates state
+          className="w-full h-40 p-4 border rounded-lg"
+        />
+
+        <button
+          onClick={() => { // onClick → triggers action
+            console.log(input)
+          }}
+          className="w-full py-3 bg-black text-white rounded-lg"
+        >
+          add
+        </button>
+
+      </div>
+    </main>
+  )
+}
