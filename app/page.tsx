@@ -1,5 +1,6 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
+import { supabase } from '@/lib/supabase'
 
 export default function Home() {
   const [visible, setVisible] = useState(false);
@@ -31,6 +32,22 @@ export default function Home() {
   const addRef = (el: HTMLDivElement | null, i: number) => {
     if (el) sectionsRef.current[i] = el;
   };
+
+  const handleSubmit = async () => {
+  if (!email) return
+
+  const { error } = await supabase
+    .from('emails')
+    .insert([{ email }])
+    console.log("result:", error)
+
+  if (error) {
+    console.error(error)
+    return
+  }
+
+  setSubmitted(true)
+}
 
   return (
     <>
@@ -532,7 +549,7 @@ export default function Home() {
               </p>
             </div>
           </div>
-        </div>
+        </div> 
       </section>
 
       {/* HOW IT WORKS */}
@@ -646,9 +663,10 @@ export default function Home() {
         <>
           <p className="modal-line">it’s still here.</p>
           <p className="modal-sub">
-            leave your email. we’ll call you when it surfaces.
+            leave your email.
+            we’ll remind you when you avoid it again.
           </p>
-
+          
           <input
             type="email"
             placeholder="you@somewhere.com"
@@ -657,15 +675,11 @@ export default function Home() {
           />
 
           <button
-            className="cta-primary"
-            onClick={() => {
-              // hook this to backend later
-              console.log(email);
-              setSubmitted(true);
-            }}
-          >
-            enter
-          </button>
+  className="cta-primary"
+  onClick={handleSubmit}
+>
+  enter
+</button>
         </>
       ) : (
         <p className="modal-line">you’ll hear from the swamp.</p>
