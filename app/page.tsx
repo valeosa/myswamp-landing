@@ -310,9 +310,9 @@ export default function Home() {
           <p className="eyebrow">mySwamp</p>
 
           <h1 className="hero-headline">
-            all that matters is
+            all that matters, 
   
-            <em> what you do next.</em>
+            <em> is what you do next.</em>
           </h1>
 
           <p className="hero-subline">
@@ -342,7 +342,7 @@ export default function Home() {
             <div>
               <h3>dump your tasks</h3>
               <p>
-                everything in your head — the urgent, the trivial, the overdue.
+                everything in your head from the urgent, to the trivial, to the overdue.
                 no categories. no priority levels. just what's there.
               </p>
             </div>
@@ -352,7 +352,7 @@ export default function Home() {
             <span className="step-num">02</span>
             <div>
               <h3>the frog surfaces</h3>
-              <p>it picks one thing. not the most attractive, the most meaningful.</p>
+              <p>one thing. not the most attractive, the most meaningful.</p>
             </div>
           </div>
 
@@ -361,7 +361,7 @@ export default function Home() {
             <div>
               <h3>done. or not yet.</h3>
               <p>
-                two options. no negotiation. the frog tracks what you avoid,
+                two options. no negotiation. mySwamp tracks what you avoid,
                 and it remembers.
               </p>
             </div>
@@ -370,9 +370,9 @@ export default function Home() {
           <div className="step">
             <span className="step-num">04</span>
             <div>
-              <h3>it's lighter now.</h3>
+              <h3>one thing done.</h3>
               <p>
-                one thing done. the weight of everything else eases up.
+                it's lighter now. the weight of everything else eases up.
               </p>
             </div>
           </div>
