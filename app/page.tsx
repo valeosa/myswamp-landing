@@ -307,7 +307,7 @@ export default function Home() {
         <div className="hero-vignette" />
 
         <div className={`hero-content ${visible ? "visible" : ""}`}>
-          <p className="eyebrow">myswamp — task prioritisation</p>
+          <p className="eyebrow">mySwamp</p>
 
           <h1 className="hero-headline">
             you don't need
@@ -318,7 +318,7 @@ export default function Home() {
           </h1>
 
           <p className="hero-subline">
-            one task per day. the one you're avoiding.
+            one action per moment. the most meaningful one.
           </p>
 
           <div className="cta-group">
@@ -354,7 +354,7 @@ export default function Home() {
             <span className="step-num">02</span>
             <div>
               <h3>the frog surfaces</h3>
-              <p>it picks one thing. not the easiest. the right one.</p>
+              <p>it picks one thing. not the most attractive. the meaningful one.</p>
             </div>
           </div>
 
@@ -399,7 +399,7 @@ export default function Home() {
                 <p className="modal-line">it’s still here.</p>
 
                 <p className="modal-sub">
-                  leave your email. we’ll remind you when you avoid it again.
+                  your first frog? leave your email below.
                 </p>
 
                 <input
