@@ -310,11 +310,11 @@ export default function Home() {
           <p className="eyebrow">mySwamp</p>
 
           <h1 className="hero-headline">
-            you don't need
+            you don't need a
             <br />
-            more discipline.
+            better system.
             <br />
-            <em>fix the leak.</em>
+            <em>you need a place to start.</em>
           </h1>
 
           <p className="hero-subline">
@@ -354,7 +354,7 @@ export default function Home() {
             <span className="step-num">02</span>
             <div>
               <h3>the frog surfaces</h3>
-              <p>it picks one thing. not the most attractive. the meaningful one.</p>
+              <p>it picks one thing. not the most attractive, the most meaningful.</p>
             </div>
           </div>
 
@@ -374,7 +374,7 @@ export default function Home() {
             <div>
               <h3>it's lighter now.</h3>
               <p>
-                one thing done. the weight of everything else subsides.
+                one thing done. the weight of everything else eases up.
               </p>
             </div>
           </div>
