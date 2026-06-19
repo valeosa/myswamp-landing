@@ -108,7 +108,7 @@ export default function Home() {
           font-size: 0.7rem;
           letter-spacing: 0.25em;
           color: var(--green-pale);
-        
+          letter-spacing: -0.02em;
           margin-bottom: 2rem;
           opacity: 0.7;
         }
@@ -321,7 +321,7 @@ export default function Home() {
 
           <div className="cta-group">
             <button className="cta-primary" onClick={() => setShowModal(true)}>
-              enter the swamp
+              start here.
             </button>
 
             <a href="#how" className="cta-secondary">
