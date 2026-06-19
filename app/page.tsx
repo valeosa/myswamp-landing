@@ -311,9 +311,7 @@ export default function Home() {
 
           <h1 className="hero-headline">
             all that maters
-            <br />
-           
-            <br />
+  
             <em>is what you do next.</em>
           </h1>
 
