@@ -312,7 +312,7 @@ export default function Home() {
         </div>
 
         
-
+</section>
       <section className="how" id="how">
         <p className="section-label">how it works</p>
 
