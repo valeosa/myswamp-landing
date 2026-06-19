@@ -307,12 +307,12 @@ export default function Home() {
         <div className="hero-vignette" />
 
         <div className={`hero-content ${visible ? "visible" : ""}`}>
-          <p className="eyebrow">mySwamp</p>
+          
 
           <h1 className="hero-headline">
-            all that matters, 
+            all that matters is
   
-            <em> is what you do next.</em>
+            <em> what you do next.</em>
           </h1>
 
           <p className="hero-subline">
@@ -330,8 +330,7 @@ export default function Home() {
           </div>
         </div>
 
-        <p className="scroll-hint">scroll</p>
-      </section>
+        
 
       <section className="how" id="how">
         <p className="section-label">how it works</p>
