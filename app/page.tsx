@@ -310,7 +310,7 @@ export default function Home() {
           <p className="eyebrow">mySwamp</p>
 
           <h1 className="hero-headline">
-            all that maters
+            all that matters
   
             <em>is what you do next.</em>
           </h1>
