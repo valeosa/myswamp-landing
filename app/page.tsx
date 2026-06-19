@@ -108,7 +108,7 @@ export default function Home() {
           font-size: 0.7rem;
           letter-spacing: 0.25em;
           color: var(--green-pale);
-          text-transform: uppercase;
+        
           margin-bottom: 2rem;
           opacity: 0.7;
         }
@@ -312,7 +312,7 @@ export default function Home() {
           <h1 className="hero-headline">
             all that matters
   
-            <em>is what you do next.</em>
+            <em> is what you do next.</em>
           </h1>
 
           <p className="hero-subline">
