@@ -104,7 +104,7 @@ export default function Home() {
         }
 
         .eyebrow {
-          font-family: 'Space Mono', monospace;
+          
           font-size: 0.7rem;
           letter-spacing: 0.25em;
           color: var(--green-pale);
@@ -310,9 +310,9 @@ export default function Home() {
           <p className="eyebrow">mySwamp</p>
 
           <h1 className="hero-headline">
-            all that matters
+            all that matters is
   
-            <em> is what you do next.</em>
+            <em> what you do next.</em>
           </h1>
 
           <p className="hero-subline">
