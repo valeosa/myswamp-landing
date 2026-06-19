@@ -396,11 +396,9 @@ export default function Home() {
 
             {!submitted ? (
               <>
-                <p className="modal-line">it’s still here.</p>
+                <p className="modal-line">your first frog? leave your email below.</p>
 
-                <p className="modal-sub">
-                  your first frog? leave your email below.
-                </p>
+      
 
                 <input
                   type="email"
