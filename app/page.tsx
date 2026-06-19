@@ -310,11 +310,11 @@ export default function Home() {
           <p className="eyebrow">mySwamp</p>
 
           <h1 className="hero-headline">
-            you don't need a
+            all that maters
             <br />
-            better system.
+           
             <br />
-            <em>you need a place to start.</em>
+            <em>is what you do next.</em>
           </h1>
 
           <p className="hero-subline">
