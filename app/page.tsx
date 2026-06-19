@@ -332,7 +332,7 @@ export default function Home() {
             <span className="step-num">02</span>
             <div>
               <h3>the frog surfaces</h3>
-              <p>one thing. not the most attractive, the most meaningful.</p>
+              <p>one small thing. not the most appealing. the most meaningful.</p>
             </div>
           </div>
 
