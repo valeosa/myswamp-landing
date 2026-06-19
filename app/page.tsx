@@ -103,16 +103,7 @@ export default function Home() {
           transform: translateY(0);
         }
 
-        .eyebrow {
-          
-          font-size: 0.7rem;
-          letter-spacing: 0.25em;
-          color: var(--green-pale);
-          letter-spacing: -0.02em;
-          margin-bottom: 2rem;
-          opacity: 0.7;
-        }
-
+       
         .hero-headline {
           font-size: clamp(2.8rem, 7vw, 6rem);
           font-weight: 300;
@@ -167,17 +158,7 @@ export default function Home() {
           padding-bottom: 2px;
         }
 
-        .scroll-hint {
-          position: absolute;
-          bottom: 2rem;
-          left: 50%;
-          transform: translateX(-50%);
-          font-family: 'Space Mono', monospace;
-          font-size: 0.6rem;
-          letter-spacing: 0.2em;
-          color: var(--green-muted);
-          text-transform: uppercase;
-        }
+        
 
         .how {
           min-height: 100vh;
