@@ -75,7 +75,11 @@ export async function POST(request: Request) {
       if (error) throw error;
     }
 
-    await sendConfirmationEmail(email, confirmationToken);
+    await sendConfirmationEmail(
+      email,
+      confirmationToken,
+      new URL(request.url).origin,
+    );
 
     return Response.json({
       status: "pending",

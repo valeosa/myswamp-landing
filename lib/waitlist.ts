@@ -14,11 +14,11 @@ export function escapePostgrestPattern(value: string) {
   return value.replace(/[\\%_]/g, "\\$&");
 }
 
-export function getSiteUrl() {
-  return (process.env.SITE_URL ?? "https://myswamp.space").replace(/\/$/, "");
-}
-
-export async function sendConfirmationEmail(email: string, token: string) {
+export async function sendConfirmationEmail(
+  email: string,
+  token: string,
+  siteUrl: string,
+) {
   const apiKey = process.env.RESEND_API_KEY;
   const from = process.env.WAITLIST_FROM_EMAIL ?? "mySwamp <hello@myswamp.space>";
 
@@ -26,7 +26,7 @@ export async function sendConfirmationEmail(email: string, token: string) {
     throw new Error("Missing RESEND_API_KEY");
   }
 
-  const confirmationUrl = `${getSiteUrl()}/api/confirm-waitlist?token=${encodeURIComponent(token)}`;
+  const confirmationUrl = `${siteUrl.replace(/\/$/, "")}/api/confirm-waitlist?token=${encodeURIComponent(token)}`;
   const text = `hey,
 confirm your spot on the mySwamp waitlist here:
 ${confirmationUrl}
