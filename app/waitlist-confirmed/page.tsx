@@ -12,13 +12,13 @@ export default function WaitlistConfirmedPage() {
       <div className={styles.shell}>
         <section className={styles.content}>
           <h1 className={styles.title}>
-            you’ve completed your first frog.
+            done.
           </h1>
           <p className={styles.description}>
             i’ll email you when mySwamp opens.
           </p>
           <Link href="/" className={styles.returnLink}>
-            return to the waterline
+            back to the surface
           </Link>
         </section>
       </div>
