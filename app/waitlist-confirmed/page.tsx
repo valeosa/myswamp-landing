@@ -10,26 +10,17 @@ export default function WaitlistConfirmedPage() {
       <div className={styles.grain} aria-hidden="true" />
 
       <div className={styles.shell}>
-        <p className={styles.brand}>mySwamp</p>
-
         <section className={styles.content}>
-          <p className={styles.eyebrow}>waitlist · confirmed</p>
           <h1 className={styles.title}>
-            you’re in
-            <em>
-              the swamp
-              <span className={styles.frog} aria-hidden="true">🐸</span>
-            </em>
+            you’ve completed your first frog.
           </h1>
           <p className={styles.description}>
             i’ll email you when mySwamp opens.
           </p>
           <Link href="/" className={styles.returnLink}>
-            return to the waterline <span aria-hidden="true">→</span>
+            return to the waterline
           </Link>
         </section>
-
-        <p className={styles.footer}>one meaningful thing at a time</p>
       </div>
     </main>
   );

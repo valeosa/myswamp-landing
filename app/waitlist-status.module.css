@@ -90,13 +90,13 @@
 }
 
 .title {
-  max-width: 650px;
+  max-width: 720px;
   margin: 0;
   font-family: "Cormorant Garamond", Georgia, serif;
-  font-size: clamp(3.7rem, 8.5vw, 7.7rem);
+  font-size: clamp(2.8rem, 7vw, 6rem);
   font-weight: 300;
-  letter-spacing: -0.045em;
-  line-height: 0.88;
+  letter-spacing: -0.02em;
+  line-height: 1.05;
 }
 
 .title em {
@@ -135,9 +135,12 @@
   border-bottom: 1px solid rgba(138, 171, 138, 0.45);
   padding-bottom: 0.35rem;
   color: var(--green-pale);
-  font-size: 0.62rem;
-  letter-spacing: 0.18em;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 1rem;
+  font-style: italic;
+  letter-spacing: 0;
   text-decoration: none;
+  text-transform: none;
   transition: border-color 180ms ease, color 180ms ease, gap 180ms ease;
 }
 
@@ -173,7 +176,6 @@
   }
 
   .content { padding-bottom: 5rem; }
-  .title { font-size: clamp(3.5rem, 19vw, 5.3rem); }
 }
 
 @media (prefers-reduced-motion: reduce) {
