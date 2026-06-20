@@ -1,30 +1,55 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { supabase } from "@/lib/supabase";
+
+type SubmitState = "idle" | "submitting" | "pending" | "confirmed" | "error";
 
 export default function Home() {
   const [visible, setVisible] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const [email, setEmail] = useState("");
-  const [submitted, setSubmitted] = useState(false);
+  const [submitState, setSubmitState] = useState<SubmitState>("idle");
+  const [message, setMessage] = useState("");
 
   useEffect(() => {
     const timer = setTimeout(() => setVisible(true), 100);
     return () => clearTimeout(timer);
   }, []);
 
-  const handleSubmit = async () => {
-    if (!email) return;
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
 
-    const { error } = await supabase.from("emails").insert([{ email }]);
-
-    if (error) {
-      console.error(error);
+    const normalizedEmail = email.trim().toLowerCase();
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(normalizedEmail)) {
+      setMessage("enter a valid email address.");
+      setSubmitState("error");
       return;
     }
 
-    setSubmitted(true);
+    setSubmitState("submitting");
+    setMessage("");
+
+    try {
+      const response = await fetch("/api/waitlist", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email: normalizedEmail }),
+      });
+      const result = (await response.json()) as {
+        status?: "pending" | "confirmed";
+        message?: string;
+      };
+
+      if (!response.ok || !result.status) {
+        throw new Error("Waitlist submission failed");
+      }
+
+      setSubmitState(result.status);
+      setMessage(result.message ?? "");
+    } catch {
+      setSubmitState("error");
+      setMessage("something went swampy. try again.");
+    }
   };
 
   return (
@@ -323,7 +348,7 @@ export default function Home() {
               <h3>dump your tasks</h3>
               <p>
                 everything in your head from the urgent, to the trivial, to the overdue.
-                no categories. no priority levels. just what's there.
+                no categories. no priority levels. just what’s there.
               </p>
             </div>
           </div>
@@ -352,7 +377,7 @@ export default function Home() {
             <div>
               <h3>one thing done.</h3>
               <p>
-                it's lighter now. the weight of everything else eases up.
+                it’s lighter now. the weight of everything else eases up.
               </p>
             </div>
           </div>
@@ -366,31 +391,47 @@ export default function Home() {
               className="back-button"
               onClick={() => {
                 setShowModal(false);
-                setSubmitted(false);
+                setSubmitState("idle");
+                setMessage("");
               }}
             >
               ← back
             </button>
 
-            {!submitted ? (
+            {submitState !== "pending" && submitState !== "confirmed" ? (
               <>
                 <p className="modal-line">your first frog? leave your email below.</p>
 
-      
+                <form onSubmit={handleSubmit} noValidate>
+                  <input
+                    type="email"
+                    placeholder="you@somewhere.com"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    aria-label="Email address"
+                    aria-describedby={message ? "waitlist-message" : undefined}
+                    disabled={submitState === "submitting"}
+                  />
 
-                <input
-                  type="email"
-                  placeholder="you@somewhere.com"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                />
+                  <button
+                    className="cta-primary"
+                    type="submit"
+                    disabled={submitState === "submitting"}
+                  >
+                    {submitState === "submitting" ? "entering..." : "enter"}
+                  </button>
+                </form>
 
-                <button className="cta-primary" onClick={handleSubmit}>
-                  enter
-                </button>
+                {message && (
+                  <p className="modal-sub" id="waitlist-message" role="alert">
+                    {message}
+                  </p>
+                )}
               </>
             ) : (
-              <p className="modal-line">you’ll hear from the swamp.</p>
+              <p className="modal-line" role="status">
+                {message}
+              </p>
             )}
           </div>
         </div>
