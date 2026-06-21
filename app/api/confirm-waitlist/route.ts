@@ -1,3 +1,4 @@
+import { createHash } from "node:crypto";
 import { NextResponse } from "next/server";
 
 import { getSupabaseAdmin } from "@/lib/supabase-admin";
@@ -9,13 +10,20 @@ function redirect(request: Request, path: string) {
   return NextResponse.redirect(new URL(path, request.url));
 }
 
+function hashToken(token: string) {
+  return createHash("sha256").update(token).digest("hex");
+}
+
 export async function GET(request: Request) {
   const token = new URL(request.url).searchParams.get("token");
 
-  if (!token) return redirect(request, "/waitlist-error");
+  if (!token || !/^[a-f0-9]{64}$/.test(token)) {
+    return redirect(request, "/waitlist-error");
+  }
 
   try {
     const supabase = getSupabaseAdmin();
+    const tokenHash = hashToken(token);
     const { data: pendingEmail, error: lookupError } = await supabase
       .from("emails")
       .select("confirmation_sent_at")
@@ -23,8 +31,21 @@ export async function GET(request: Request) {
       .eq("status", "pending")
       .maybeSingle();
 
-    if (lookupError || !pendingEmail?.confirmation_sent_at) {
+    if (lookupError) {
       return redirect(request, "/waitlist-error");
+    }
+
+    if (!pendingEmail?.confirmation_sent_at) {
+      const { data: alreadyConfirmed, error: confirmedLookupError } = await supabase
+        .from("emails")
+        .select("id")
+        .eq("confirmation_token_hash", tokenHash)
+        .eq("status", "confirmed")
+        .maybeSingle();
+
+      return !confirmedLookupError && alreadyConfirmed
+        ? redirect(request, "/waitlist-confirmed")
+        : redirect(request, "/waitlist-error");
     }
 
     const sentAt = new Date(pendingEmail.confirmation_sent_at).getTime();
@@ -38,6 +59,7 @@ export async function GET(request: Request) {
         status: "confirmed",
         confirmed_at: new Date().toISOString(),
         confirmation_token: null,
+        confirmation_token_hash: tokenHash,
       })
       .eq("confirmation_token", token)
       .eq("status", "pending")
@@ -45,7 +67,16 @@ export async function GET(request: Request) {
       .maybeSingle();
 
     if (updateError || !confirmed) {
-      return redirect(request, "/waitlist-error");
+      const { data: confirmedByAnotherRequest } = await supabase
+        .from("emails")
+        .select("id")
+        .eq("confirmation_token_hash", tokenHash)
+        .eq("status", "confirmed")
+        .maybeSingle();
+
+      return confirmedByAnotherRequest
+        ? redirect(request, "/waitlist-confirmed")
+        : redirect(request, "/waitlist-error");
     }
 
     return redirect(request, "/waitlist-confirmed");
