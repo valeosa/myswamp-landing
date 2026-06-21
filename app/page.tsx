@@ -103,7 +103,7 @@ export default function Home() {
         .hero-content {
           position: relative;
           z-index: 2;
-          max-width: 720px;
+          max-width: 900px;
           opacity: 0;
           transform: translateY(24px);
           transition: opacity 1.2s ease 0.8s, transform 1.2s ease 0.8s;
@@ -116,7 +116,7 @@ export default function Home() {
 
        
         .hero-headline {
-          font-size: clamp(2.8rem, 7vw, 6rem);
+          font-size: clamp(2.5rem, 5vw, 4.5rem);
           font-weight: 300;
           line-height: 1.05;
           letter-spacing: -0.02em;
@@ -156,8 +156,6 @@ export default function Home() {
           color: var(--green-pale);
           text-decoration: none;
           opacity: 0.75;
-          border-bottom: 1px solid currentColor;
-          padding-bottom: 2px;
         }
 
         
@@ -176,7 +174,7 @@ export default function Home() {
           letter-spacing: 0.3em;
           color: var(--green-muted);
           text-transform: uppercase;
-          margin-bottom: 4rem;
+          margin-bottom: 1.5rem;
         }
 
         .steps {
@@ -188,7 +186,7 @@ export default function Home() {
           display: grid;
           grid-template-columns: 60px 1fr;
           gap: 2rem;
-          padding: 2.5rem 0;
+          padding: 1.6rem 0;
         }
 
         .step-num {
@@ -200,7 +198,7 @@ export default function Home() {
         }
 
         .step h3 {
-          font-size: clamp(1.25rem, 2.5vw, 1.7rem);
+          font-size: clamp(1.1rem, 2vw, 1.4rem);
           font-weight: 300;
           color: var(--cream);
           margin-bottom: 0.75rem;
@@ -208,7 +206,7 @@ export default function Home() {
         }
 
         .step p {
-          font-size: clamp(1rem, 1.5vw, 1.15rem);
+          font-size: clamp(0.9rem, 1.2vw, 1rem);
           color: var(--cream-dim);
           line-height: 1.8;
           font-weight: 300;
@@ -318,7 +316,6 @@ export default function Home() {
               <h3>dump your tasks</h3>
               <p>
                 everything in your head from the urgent, to the trivial, to the overdue.
-                no categories. no priority levels. just what’s there.
               </p>
             </div>
           </div>
@@ -327,7 +324,7 @@ export default function Home() {
             <span className="step-num">02</span>
             <div>
               <h3>the frog surfaces</h3>
-              <p>one small thing. not the most appealing. the most meaningful.</p>
+              <p>the smallest meaningful action.</p>
             </div>
           </div>
 
@@ -336,8 +333,7 @@ export default function Home() {
             <div>
               <h3>done. or not yet.</h3>
               <p>
-                two options. no negotiation. mySwamp tracks what you avoid,
-                and it remembers.
+                two options. mySwamp tracks what you avoid, and it remembers.
               </p>
             </div>
           </div>
@@ -347,7 +343,7 @@ export default function Home() {
             <div>
               <h3>one thing done.</h3>
               <p>
-                it’s lighter now. the weight of everything else eases up.
+                the weight of everything else eases up.
               </p>
             </div>
           </div>
