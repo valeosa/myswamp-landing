@@ -13,7 +13,7 @@ export default function WaitlistErrorPage() {
         <section className={styles.content}>
           <h1 className={styles.title}>this link looks a little foggy.</h1>
           <p className={styles.description}>
-            confirmation links fade after 24 hours. try joining the waitlist again.
+            this confirmation link couldn’t be verified. try joining the waitlist again.
           </p>
           <Link href="/" className={styles.returnLink}>
             join the waitlist again
