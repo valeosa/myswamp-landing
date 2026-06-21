@@ -55,13 +55,11 @@ export default function Home() {
   return (
     <>
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Space+Mono:wght@400;700&display=swap');
-
         * { box-sizing: border-box; margin: 0; padding: 0; }
 
         :root {
-          --black: #080a08;
-          --deep: #0d120d;
+          --black: #07100b;
+          --deep: #0b1710;
           --green-dark: #1a2a1a;
           --green-muted: #4a6b4a;
           --green-pale: #8aab8a;
@@ -74,7 +72,7 @@ export default function Home() {
         body {
           background: var(--black);
           color: var(--cream);
-          font-family: 'Cormorant Garamond', Georgia, serif;
+          font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
           overflow-x: hidden;
         }
 
@@ -97,22 +95,10 @@ export default function Home() {
           background-position: center;
           opacity: 0;
           transition: opacity 3s ease;
-          filter: brightness(0.25) saturate(0.8);
+          filter: brightness(0.5) saturate(0.82);
         }
 
         .hero-bg.visible { opacity: 1; }
-
-        .hero-vignette {
-          position: absolute;
-          inset: 0;
-          background: radial-gradient(
-            ellipse at 30% 50%,
-            transparent 20%,
-            rgba(8,10,8,0.7) 70%,
-            var(--black) 100%
-          );
-          pointer-events: none;
-        }
 
         .hero-content {
           position: relative;
@@ -143,15 +129,6 @@ export default function Home() {
           color: var(--green-pale);
         }
 
-        .hero-subline {
-          font-size: clamp(1rem, 2vw, 1.3rem);
-          font-weight: 300;
-          color: var(--cream-dim);
-          margin-bottom: 3rem;
-          font-style: italic;
-          line-height: 1.6;
-        }
-
         .cta-group {
           display: flex;
           gap: 1rem;
@@ -160,7 +137,7 @@ export default function Home() {
         }
 
         .cta-primary {
-          font-family: 'Space Mono', monospace;
+          font-family: inherit;
           font-size: 0.8rem;
           letter-spacing: 0.14em;
           color: var(--black);
@@ -173,7 +150,7 @@ export default function Home() {
         }
 
         .cta-secondary {
-          font-family: 'Space Mono', monospace;
+          font-family: inherit;
           font-size: 0.75rem;
           letter-spacing: 0.12em;
           color: var(--green-pale);
@@ -190,10 +167,11 @@ export default function Home() {
           padding: clamp(5rem, 12vw, 10rem) clamp(2rem, 8vw, 6rem);
           max-width: 900px;
           margin: 0 auto;
+          background: #07100b;
         }
 
         .section-label {
-          font-family: 'Space Mono', monospace;
+          font-family: inherit;
           font-size: 0.65rem;
           letter-spacing: 0.3em;
           color: var(--green-muted);
@@ -211,13 +189,10 @@ export default function Home() {
           grid-template-columns: 60px 1fr;
           gap: 2rem;
           padding: 2.5rem 0;
-          border-bottom: 1px solid var(--green-dark);
         }
 
-        .step:last-child { border-bottom: none; }
-
         .step-num {
-          font-family: 'Space Mono', monospace;
+          font-family: inherit;
           font-size: 0.7rem;
           color: var(--green-muted);
           letter-spacing: 0.1em;
@@ -257,7 +232,7 @@ export default function Home() {
         }
 
         .back-button {
-          font-family: 'Space Mono', monospace;
+          font-family: inherit;
           font-size: 0.75rem;
           color: var(--green-pale);
           background: none;
@@ -288,7 +263,7 @@ export default function Home() {
           background: transparent;
           border: 1px solid var(--green-pale);
           color: var(--cream);
-          font-family: 'Space Mono', monospace;
+          font-family: inherit;
           font-size: 0.9rem;
           padding: 1.2rem;
           margin-bottom: 1rem;
@@ -310,7 +285,6 @@ export default function Home() {
 
       <section className="hero">
         <div className={`hero-bg ${visible ? "visible" : ""}`} />
-        <div className="hero-vignette" />
 
         <div className={`hero-content ${visible ? "visible" : ""}`}>
           
@@ -320,10 +294,6 @@ export default function Home() {
   
             <em> what you do next.</em>
           </h1>
-
-          <p className="hero-subline">
-            one action per moment. the most meaningful one.
-          </p>
 
           <div className="cta-group">
             <button className="cta-primary" onClick={() => setShowModal(true)}>

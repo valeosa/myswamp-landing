@@ -52,7 +52,7 @@
 .eyebrow,
 .returnLink,
 .footer {
-  font-family: "Space Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
   text-transform: uppercase;
 }
 
@@ -92,7 +92,7 @@
 .title {
   max-width: 720px;
   margin: 0;
-  font-family: "Cormorant Garamond", Georgia, serif;
+  font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
   font-size: clamp(2.8rem, 7vw, 6rem);
   font-weight: 300;
   letter-spacing: -0.02em;
@@ -109,7 +109,7 @@
 .frog {
   display: inline-block;
   margin-left: 0.22em;
-  font-family: system-ui, sans-serif;
+  font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
   font-size: 0.3em;
   font-style: normal;
   vertical-align: 0.65em;
@@ -120,7 +120,7 @@
   max-width: 30rem;
   margin: 2.1rem 0 0;
   color: var(--cream-dim);
-  font-family: "Cormorant Garamond", Georgia, serif;
+  font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
   font-size: clamp(1.05rem, 2vw, 1.3rem);
   font-style: italic;
   font-weight: 300;
@@ -135,7 +135,7 @@
   border-bottom: 1px solid rgba(138, 171, 138, 0.45);
   padding-bottom: 0.35rem;
   color: var(--green-pale);
-  font-family: "Cormorant Garamond", Georgia, serif;
+  font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
   font-size: 1rem;
   font-style: italic;
   letter-spacing: 0;
