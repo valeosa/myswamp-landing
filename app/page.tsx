@@ -130,11 +130,12 @@ export default function Home() {
         }
 
 .hero-subhead {
-  max-width: 34rem;
-  margin-bottom: 2rem;
-  font-size: clamp(0.95rem, 1.4vw, 1.1rem);
-  line-height: 1.7;
+  max-width: 22rem;
+  margin: 0 0 1.5rem 0;
+  font-size: 0.75rem;
+  line-height: 1.6;
   color: var(--cream-dim);
+  opacity: 0.80;
   font-weight: 300;
 }
 
