@@ -304,7 +304,7 @@ font-style: italic;
 </h1>
 
 <p className="hero-subhead">
-  mySwamp turns your messy task dump into one small thing to do next.
+  mySwamp turns a messy task dump into one small thing to do the next.
 </p>
 
           <div className="cta-group">
@@ -321,7 +321,7 @@ font-style: italic;
         
 </section>
       <section className="how" id="how">
-        <p className="section-label">how it works</p>
+        <p className="section-label"> </p>
 
         <div className="steps">
           <div className="step">
