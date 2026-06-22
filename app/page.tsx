@@ -287,11 +287,14 @@ export default function Home() {
         <div className={`hero-content ${visible ? "visible" : ""}`}>
           
 
-          <h1 className="hero-headline">
-            all that matters is
-  
-            <em> what you do next.</em>
-          </h1>
+        <h1 className="hero-headline">
+  all that matters is
+  <em> what you do next.</em>
+</h1>
+
+<p className="hero-subhead">
+  mySwamp turns your messy task dump into one small thing to do next.
+</p>
 
           <div className="cta-group">
             <button className="cta-primary" onClick={() => setShowModal(true)}>
@@ -333,7 +336,7 @@ export default function Home() {
             <div>
               <h3>done. or not yet.</h3>
               <p>
-                two options. mySwamp tracks what you avoid, and it remembers.
+                two options. mySwamp notices what gets avoided, so patterns can surface later.
               </p>
             </div>
           </div>
@@ -366,7 +369,7 @@ export default function Home() {
 
             {submitState !== "pending" && submitState !== "confirmed" ? (
               <>
-                <p className="modal-line">your first frog? leave your email below.</p>
+                <p className="modal-line">launching July 3rd. get notified when the swamp opens.</p>
 
                 <form onSubmit={handleSubmit} noValidate>
                   <input
