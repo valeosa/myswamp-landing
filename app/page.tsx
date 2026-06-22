@@ -129,6 +129,15 @@ export default function Home() {
           color: var(--green-pale);
         }
 
+.hero-subhead {
+  max-width: 34rem;
+  margin-bottom: 2rem;
+  font-size: clamp(0.95rem, 1.4vw, 1.1rem);
+  line-height: 1.7;
+  color: var(--cream-dim);
+  font-weight: 300;
+}
+
         .cta-group {
           display: flex;
           gap: 1rem;
