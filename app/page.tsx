@@ -135,7 +135,8 @@ export default function Home() {
   font-size: 0.75rem;
   line-height: 1.6;
   color: var(--cream-dim);
-  opacity: 0.80;
+  opacity: 0.85;
+font-style: italic;
   font-weight: 300;
 }
 
@@ -298,7 +299,7 @@ export default function Home() {
           
 
         <h1 className="hero-headline">
-  all that matters is
+  what matters is
   <em> what you do next.</em>
 </h1>
 
