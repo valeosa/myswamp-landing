@@ -220,7 +220,7 @@ font-style: italic;
           font-size: clamp(0.9rem, 1.2vw, 1rem);
           color: var(--cream-dim);
           line-height: 1.8;
-          font-weight: 300;
+          font-weight: 320;
         }
 
         .modal {
@@ -304,12 +304,12 @@ font-style: italic;
 </h1>
 
 <p className="hero-subhead">
-  mySwamp turns a messy task dump into one small thing to do the next.
+  mySwamp turns a messy task dump into the exact thing you need to do the next.
 </p>
 
           <div className="cta-group">
             <button className="cta-primary" onClick={() => setShowModal(true)}>
-              start here.
+              join in.
             </button>
 
             <a href="#how" className="cta-secondary">
@@ -327,7 +327,7 @@ font-style: italic;
           <div className="step">
             <span className="step-num">01</span>
             <div>
-              <h3>dump your tasks</h3>
+              <h3>dump your tasks.</h3>
               <p>
                 everything in your head from the urgent, to the trivial, to the overdue.
               </p>
@@ -337,7 +337,7 @@ font-style: italic;
           <div className="step">
             <span className="step-num">02</span>
             <div>
-              <h3>the frog surfaces</h3>
+              <h3>the frog surfaces.</h3>
               <p>chosen by the swamp.</p>
             </div>
           </div>
@@ -347,7 +347,7 @@ font-style: italic;
             <div>
               <h3>done. or not yet.</h3>
               <p>
-                two options. mySwamp notices what gets avoided, so patterns can surface later.
+                two options. mySwamp tracks what you avoid, and it remembers.
               </p>
             </div>
           </div>
