@@ -135,9 +135,9 @@ export default function Home() {
   font-size: 0.75rem;
   line-height: 1.6;
   color: var(--cream-dim);
-  opacity: 0.85;
+  opacity: 0.9;
 font-style: italic;
-  font-weight: 300;
+  font-weight: 330;
 }
 
         .cta-group {
