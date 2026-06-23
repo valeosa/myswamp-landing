@@ -1,9 +1,17 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { track } from '@vercel/analytics';
+
 
 type SubmitState = "idle" | "submitting" | "pending" | "confirmed" | "error";
+
+function logEvent(name: string, properties?: Record<string, unknown>) {
+  fetch("/api/track", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ name, properties }),
+  }).catch(() => {});
+}
 
 export default function Home() {
   const [visible, setVisible] = useState(false);
@@ -26,9 +34,8 @@ export default function Home() {
       setSubmitState("error");
       return;
     }
-track('waitlist_submit_attempt');
 
-
+    logEvent('waitlist_submit_attempt');
     setSubmitState("submitting");
     setMessage("");
 
@@ -48,6 +55,7 @@ track('waitlist_submit_attempt');
       }
 
       setSubmitState(result.status);
+      logEvent('waitlist_submit_success', { status: result.status });
       setMessage(result.message ?? "");
     } catch {
       setSubmitState("error");
@@ -312,7 +320,7 @@ font-style: italic;
 
           <div className="cta-group">
            <button className="cta-primary" onClick={() => {
-  track('cta_click');
+  logEvent('cta_click');
   setShowModal(true);
 }}>
   notify me.
