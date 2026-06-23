@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { track } from '@vercel/analytics';
 
 type SubmitState = "idle" | "submitting" | "pending" | "confirmed" | "error";
 
@@ -308,9 +309,12 @@ font-style: italic;
 </p>
 
           <div className="cta-group">
-            <button className="cta-primary" onClick={() => setShowModal(true)}>
-              join in.
-            </button>
+           <button className="cta-primary" onClick={() => {
+  track('cta_click');
+  setShowModal(true);
+}}>
+  notify me.
+</button>
 
             <a href="#how" className="cta-secondary">
               how it works
