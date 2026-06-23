@@ -26,6 +26,8 @@ export default function Home() {
       setSubmitState("error");
       return;
     }
+track('waitlist_submit_attempt');
+
 
     setSubmitState("submitting");
     setMessage("");
