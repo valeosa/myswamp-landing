@@ -394,7 +394,7 @@ font-style: italic;
 
             {submitState !== "pending" && submitState !== "confirmed" ? (
               <>
-                <p className="modal-line">launching July 3rd. get notified when the swamp opens.</p>
+                <p className="modal-line">your first frog? leave your email to get notified below.</p>
 
                 <form onSubmit={handleSubmit} noValidate>
                   <input
