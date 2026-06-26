@@ -219,13 +219,11 @@ margin-right: auto;
   opacity: 0.8;
 }
 
-       .capture {
+     .capture {
   background: rgba(11, 23, 16, .75);
-
   border: 1px solid rgba(74,107,74,.35);
-
   border-radius: 20px;
-
+  padding: clamp(1.75rem, 5vw, 2.5rem);
   backdrop-filter: blur(10px);
 
   box-shadow:
