@@ -169,7 +169,40 @@ export default function Home() {
           margin-bottom: 1.6rem;
         }
 
-       
+       .cta-group {
+  margin-top: 2rem;
+  display: flex;
+  gap: 1.25rem;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.cta-primary {
+  font-family: inherit;
+  font-size: 0.8rem;
+  letter-spacing: 0.12em;
+  color: var(--black);
+  background: var(--cream);
+  border: none;
+  padding: 0.95rem 2.1rem;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+  border-radius: 2px;
+}
+.cta-primary:disabled {
+  opacity: 0.55;
+  cursor: default;
+}
+
+.cta-secondary {
+  font-family: inherit;
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  color: var(--green-pale);
+  text-decoration: none;
+  opacity: 0.8;
+}
 
         .capture {
           background: var(--deep);
