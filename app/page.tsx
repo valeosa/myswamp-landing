@@ -286,8 +286,8 @@ text-align: center;
 </p>
 
 <p className="hero-lede">
-  no tags. no dashboards. no streaks. just one frog surfaced.
-  done, or not yet — either way, it sinks into the water&apos;s memory.
+  just one frog surfaced. two options: done, or not yet. 
+  either way, it sinks into your water&apos;s memory. no tags. no dashboards. no streaks. 
 </p>
 
         
