@@ -315,7 +315,7 @@ export default function Home() {
         </section>
 
         <footer>
-          <p className="tagline">no streaks. no second brain. just today&apos;s frog.</p>
+          <p className="tagline">a quiet place your tasks can live.</p>
           <p className="meta">mySwamp © 2026</p>
         </footer>
       </div>
