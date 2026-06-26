@@ -78,13 +78,12 @@ export default function Home() {
 
         <div className="hero-copy">
           <h1>
-            modern software is becoming a third space.
-            <br />
+            modern software is becoming a third space.{" "}
             <em>so why don&apos;t more apps feel like it?</em>
           </h1>
 
           <p>
-            I didn&apos;t want to build another tool so I&apos;m building a place.
+            I didn&apos;t want to build another tool so I&apos;m building a place:
             mySwamp.
           </p>
 
@@ -95,8 +94,8 @@ export default function Home() {
           </p>
 
           <p>
-            two options; done or not yet. either way, it sinks into your
-            water&apos;s memory. no tags. no dashboards. no streaks.
+            two options; done or not yet. either way, it sinks into your memory,
+            just like sediment. no tags. no dashboards. no streaks.
           </p>
         </div>
 
@@ -106,7 +105,7 @@ export default function Home() {
               @
             </div>
             <div>
-              <h2>{isDone ? "Thanks for joining the waitlist" : "One frog. No second brain."}</h2>
+              <h2>{isDone ? "Thanks for joining the waitlist" : "No second brain. A second place."}</h2>
               <p>
                 {isDone
                   ? "Check your email to confirm your spot. In the meantime, pass the waterline to someone who needs one frog."
@@ -133,7 +132,7 @@ export default function Home() {
                 disabled={isWaiting}
               />
 
-              <button type="submit" disabled={isWaiting || !email.trim()}>
+              <button type="submit" disabled={isWaiting}>
                 {isWaiting ? "sending..." : "get early access"}
               </button>
             </form>
