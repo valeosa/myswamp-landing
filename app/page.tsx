@@ -282,9 +282,9 @@ export default function Home() {
 
         <section className={`hero ${visible ? "visible" : ""}`}>
           <h1 className="hero-headline">
-            what matters is
+            less planning.
             <br />
-            <em>what you do next.</em>
+            <em>more movement.</em>
           </h1>
 
          <p className="hero-lede">
@@ -292,7 +292,7 @@ export default function Home() {
 </p>
 
 <p className="hero-lede">
-  no tags. no dashboards. no streaks. just one frog surfaced.
+  no tags. no dashboards. no streaks. just one frog surfaced. 
 </p>
 
         
