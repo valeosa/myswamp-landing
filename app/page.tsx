@@ -83,7 +83,7 @@ export default function Home() {
           </h1>
         
           <p>
-            instead of just managing habits, you dump your tasks into the swamp,
+            instead of just managing tasks, you dump them into the swamp,
             and out comes a single, undeniable &lsquo;frog&rsquo;: the
             exact thing you need to do next.
           </p>
