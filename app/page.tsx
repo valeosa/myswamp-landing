@@ -272,27 +272,7 @@ text-align: center;
         }
       `}</style>
 
-     
-
-        <section className={`hero ${visible ? "visible" : ""}`}>
-          <h1 className="hero-headline">
-            less planning.
-            <br />
-            <em>more movement.</em>
-          </h1>
-
-         <p className="hero-lede">
-  mySwamp turns a messy task dump into the exact thing you need to do next: the 'frog'.
-</p>
-
-<p className="hero-lede">
-  two options: done, or not yet. 
-  either way, it sinks into your water&apos;s memory. 
-  no tags. no dashboards. no streaks. 
-</p>
-
-        
-        </section>
+     </section>
  <div className="wrap">
         <div className={`topbar ${visible ? "visible" : ""}`}>
           <div className="mark">
@@ -306,6 +286,26 @@ text-align: center;
           </div>
           <div className="wordmark">mySwamp</div>
         </div>
+
+        <section className={`hero ${visible ? "visible" : ""}`}>
+          <h1 className="hero-headline">
+            what matter is 
+            <br />
+            <em>what you do next.</em>
+          </h1>
+
+         <p className="hero-lede">
+  mySwamp turns a messy task dump 
+into the exact thing you need to do next: the 'frog'.
+</p>
+
+<p className="hero-lede">
+  two options: done, or not yet. either way, it sinks into your water&apos;s memory. 
+  no tags. no dashboards. no streaks. 
+</p>
+
+        
+        
         
         <div className="divider" />
 
