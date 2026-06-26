@@ -272,7 +272,7 @@ text-align: center;
         }
       `}</style>
 
-     </section>
+    
  <div className="wrap">
         <div className={`topbar ${visible ? "visible" : ""}`}>
           <div className="mark">
