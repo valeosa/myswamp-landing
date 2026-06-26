@@ -282,12 +282,13 @@ text-align: center;
           </h1>
 
          <p className="hero-lede">
-  mySwamp turns a messy task dump into the exact thing you need to do next.
+  mySwamp turns a messy task dump into the exact thing you need to do next: the 'frog'.
 </p>
 
 <p className="hero-lede">
-  just one frog surfaced. two options: done, or not yet. 
-  either way, it sinks into your water&apos;s memory. no tags. no dashboards. no streaks. 
+  two options: done, or not yet. 
+  either way, it sinks into your water&apos;s memory. 
+  no tags. no dashboards. no streaks. 
 </p>
 
         
