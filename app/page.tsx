@@ -141,8 +141,8 @@ export default function Home() {
         }
 
         .hero-headline em {
-          font-style: italic;
-          color: var(--green-pale);
+        
+          color: var(--cream);
         }
 
         .hero-lede {
@@ -178,11 +178,11 @@ margin-right: auto;
 
 .cta-primary {
   width: 100%;
-  font-family: inherit;
+  font-weight: 300;
   font-size: 0.8rem;
   letter-spacing: 0.12em;
   color: var(--black);
-  background: var(--cream);
+  background: color: var(--green-pale);
   border: 1px solid rgba(255,255,255,0.08);
   padding: 1rem 2.1rem;
   cursor: pointer;
