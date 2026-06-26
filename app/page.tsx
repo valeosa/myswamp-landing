@@ -128,6 +128,7 @@ export default function Home() {
           opacity: 0;
           transform: translateY(20px);
           transition: opacity 1.1s ease 0.15s, transform 1.1s ease 0.15s;
+           text-align: center;
         }
         .hero.visible { opacity: 1; transform: translateY(0); }
 
@@ -149,7 +150,9 @@ export default function Home() {
           max-width: 30rem;
           font-size: 1rem;
           line-height: 1.7;
-          color: var(--cream-dim);
+          color: #c4b89f;
+margin-left: auto;
+margin-right: auto;
         }
 
         .hero-lede + .hero-lede { margin-top: 0.9rem; }
@@ -189,6 +192,8 @@ export default function Home() {
   text-decoration: none;
   display: inline-block;
   border-radius: 2px;
+  width: 100%;
+  text-align: center;
 }
 .cta-primary:disabled {
   opacity: 0.55;
@@ -209,6 +214,7 @@ export default function Home() {
           border: 1px solid var(--green-dark);
           border-radius: 4px;
           padding: clamp(1.75rem, 5vw, 2.5rem);
+text-align: center;
         }
 
         .capture-line {
@@ -292,7 +298,8 @@ export default function Home() {
 </p>
 
 <p className="hero-lede">
-  no tags. no dashboards. no streaks. just one frog surfaced. 
+  no tags. no dashboards. no streaks. just one frog surfaced.
+  done, or not yet — either way, it sinks into the water&apos;s memory.
 </p>
 
         
@@ -348,7 +355,9 @@ export default function Home() {
         </section>
 
         <footer>
-          <p className="tagline">a quiet place your tasks can live.</p>
+         <p className="tagline">
+  one thing done. it&apos;s lighter now.
+</p>
           <p className="meta">mySwamp © 2026</p>
         </footer>
       </div>
