@@ -78,18 +78,24 @@ export default function Home() {
 
         <div className="hero-copy">
           <h1>
-            what matters is
+            modern software is becoming a third space.
             <br />
-            <em>what you do next.</em>
+            <em>so why don&apos;t more apps feel like it?</em>
           </h1>
 
           <p>
-            mySwamp turns a messy task dump into the exact thing you need to do
-            next: the frog.
+            I didn&apos;t want to build another tool so I&apos;m building a place.
+            mySwamp.
           </p>
 
           <p>
-            two options: done, or not yet. either way, it sinks into your
+            instead of just tracking habits, you dump your tasks into the swamp,
+            and out of it comes the slimy, undeniable &lsquo;frog&rsquo;: the
+            exact thing you need to do next.
+          </p>
+
+          <p>
+            two options; done or not yet. either way, it sinks into your
             water&apos;s memory. no tags. no dashboards. no streaks.
           </p>
         </div>
@@ -100,14 +106,13 @@ export default function Home() {
               @
             </div>
             <div>
-              <h2>{isDone ? "Thanks for joining the waitlist" : "one frog. no second brain."}</h2>
+              <h2>{isDone ? "Thanks for joining the waitlist" : "One frog. No second brain."}</h2>
               <p>
                 {isDone
                   ? "Check your email to confirm your spot. In the meantime, pass the waterline to someone who needs one frog."
                   : "Get early access and confirm your spot when mySwamp opens."}
               </p>
             </div>
-            <span aria-hidden="true">now</span>
           </div>
 
           {!isDone ? (
