@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from "react";
 
-
 type SubmitState = "idle" | "submitting" | "pending" | "confirmed" | "error";
 
 function logEvent(name: string, properties?: Record<string, unknown>) {
@@ -15,7 +14,6 @@ function logEvent(name: string, properties?: Record<string, unknown>) {
 
 export default function Home() {
   const [visible, setVisible] = useState(false);
-  const [showModal, setShowModal] = useState(false);
   const [email, setEmail] = useState("");
   const [submitState, setSubmitState] = useState<SubmitState>("idle");
   const [message, setMessage] = useState("");
@@ -35,7 +33,7 @@ export default function Home() {
       return;
     }
 
-    logEvent('waitlist_submit_attempt');
+    logEvent("waitlist_submit_attempt");
     setSubmitState("submitting");
     setMessage("");
 
@@ -55,13 +53,15 @@ export default function Home() {
       }
 
       setSubmitState(result.status);
-      logEvent('waitlist_submit_success', { status: result.status });
+      logEvent("waitlist_submit_success", { status: result.status });
       setMessage(result.message ?? "");
     } catch {
       setSubmitState("error");
       setMessage("something went swampy. try again.");
     }
   };
+
+  const formDone = submitState === "pending" || submitState === "confirmed";
 
   return (
     <>
@@ -84,55 +84,59 @@ export default function Home() {
           background: var(--black);
           color: var(--cream);
           font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
-          overflow-x: hidden;
+        }
+
+        a { color: var(--green-pale); }
+
+        .wrap {
+          max-width: 640px;
+          margin: 0 auto;
+          padding: 0 clamp(1.5rem, 6vw, 2.5rem);
+        }
+
+        .topbar {
+          display: flex;
+          align-items: center;
+          gap: 0.75rem;
+          padding: 2.5rem 0 0;
+          opacity: 0;
+          transform: translateY(8px);
+          transition: opacity 1s ease, transform 1s ease;
+        }
+        .topbar.visible { opacity: 1; transform: translateY(0); }
+
+        .mark {
+          width: 32px;
+          height: 32px;
+          border-radius: 9px;
+          background: var(--green-dark);
+          border: 1px solid var(--green-muted);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          flex-shrink: 0;
+        }
+        .mark svg { width: 18px; height: 18px; }
+
+        .wordmark {
+          font-size: 0.95rem;
+          letter-spacing: -0.01em;
         }
 
         .hero {
-          position: relative;
-          min-height: 100vh;
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-          align-items: flex-start;
-          padding: clamp(2rem, 8vw, 6rem);
-          overflow: hidden;
-        }
-
-        .hero-bg {
-          position: absolute;
-          inset: 0;
-          background-image: url('/swamp.jpg');
-          background-size: cover;
-          background-position: center;
+          padding: clamp(3.5rem, 10vw, 6rem) 0 1rem;
           opacity: 0;
-          transition: opacity 3s ease;
-          filter: brightness(0.5) saturate(0.82);
+          transform: translateY(20px);
+          transition: opacity 1.1s ease 0.15s, transform 1.1s ease 0.15s;
         }
+        .hero.visible { opacity: 1; transform: translateY(0); }
 
-        .hero-bg.visible { opacity: 1; }
-
-        .hero-content {
-          position: relative;
-          z-index: 2;
-          max-width: 900px;
-          opacity: 0;
-          transform: translateY(24px);
-          transition: opacity 1.2s ease 0.8s, transform 1.2s ease 0.8s;
-        }
-
-        .hero-content.visible {
-          opacity: 1;
-          transform: translateY(0);
-        }
-
-       
         .hero-headline {
-          font-size: clamp(2.5rem, 5vw, 4.5rem);
+          font-size: clamp(2.4rem, 6vw, 3.6rem);
           font-weight: 300;
-          line-height: 1.05;
+          line-height: 1.08;
           letter-spacing: -0.02em;
           color: var(--cream);
-          margin-bottom: 1rem;
         }
 
         .hero-headline em {
@@ -140,20 +144,20 @@ export default function Home() {
           color: var(--green-pale);
         }
 
-.hero-subhead {
-  max-width: 22rem;
-  margin: 0 0 1.5rem 0;
-  font-size: 0.75rem;
-  line-height: 1.6;
-  color: var(--cream-dim);
-  opacity: 0.9;
-font-style: italic;
-  font-weight: 330;
-}
+        .hero-lede {
+          margin-top: 1.5rem;
+          max-width: 30rem;
+          font-size: 1rem;
+          line-height: 1.7;
+          color: var(--cream-dim);
+        }
+
+        .hero-lede + .hero-lede { margin-top: 0.9rem; }
 
         .cta-group {
+          margin-top: 2rem;
           display: flex;
-          gap: 1rem;
+          gap: 1.25rem;
           flex-wrap: wrap;
           align-items: center;
         }
@@ -161,121 +165,83 @@ font-style: italic;
         .cta-primary {
           font-family: inherit;
           font-size: 0.8rem;
-          letter-spacing: 0.14em;
+          letter-spacing: 0.12em;
           color: var(--black);
           background: var(--cream);
           border: none;
-          padding: 0.95rem 2.3rem;
+          padding: 0.95rem 2.1rem;
           cursor: pointer;
           text-decoration: none;
           display: inline-block;
+          border-radius: 2px;
         }
+        .cta-primary:disabled { opacity: 0.55; cursor: default; }
 
         .cta-secondary {
           font-family: inherit;
           font-size: 0.75rem;
-          letter-spacing: 0.12em;
+          letter-spacing: 0.1em;
           color: var(--green-pale);
           text-decoration: none;
-          opacity: 0.75;
-        }
-
-        
-
-        .how {
-          min-height: 100vh;
-          padding: clamp(5rem, 12vw, 10rem) clamp(2rem, 8vw, 6rem);
-          max-width: 900px;
-          margin: 0 auto;
-          background: #07100b;
-        }
-
-        .section-label {
-          font-family: inherit;
-          font-size: 0.65rem;
-          letter-spacing: 0.3em;
-          color: var(--green-muted);
-          text-transform: uppercase;
-          margin-bottom: 1.5rem;
-        }
-
-        .steps {
-          display: flex;
-          flex-direction: column;
-        }
-
-        .step {
-          display: grid;
-          grid-template-columns: 60px 1fr;
-          gap: 2rem;
-          padding: 1.6rem 0;
-        }
-
-        .step-num {
-          font-family: inherit;
-          font-size: 0.7rem;
-          color: var(--green-muted);
-          letter-spacing: 0.1em;
-          padding-top: 0.35rem;
-        }
-
-        .step h3 {
-          font-size: clamp(1.1rem, 2vw, 1.4rem);
-          font-weight: 300;
-          color: var(--cream);
-          margin-bottom: 0.75rem;
-          font-style: italic;
-        }
-
-        .step p {
-          font-size: clamp(0.9rem, 1.2vw, 1rem);
-          color: var(--cream-dim);
-          line-height: 1.8;
-          font-weight: 320;
-        }
-
-        .modal {
-          position: fixed;
-          inset: 0;
-          z-index: 50;
-          background: rgba(0, 0, 0, 0.86);
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          padding: 2rem;
-        }
-
-        .modal-inner {
-          width: 100%;
-          max-width: 520px;
-          position: relative;
-        }
-
-        .back-button {
-          font-family: inherit;
-          font-size: 0.75rem;
-          color: var(--green-pale);
-          background: none;
-          border: none;
-          margin-bottom: 2rem;
-          cursor: pointer;
-          letter-spacing: 0.12em;
           opacity: 0.8;
         }
 
-        .modal-line {
-          font-size: clamp(2rem, 6vw, 3.6rem);
-          font-weight: 300;
-          font-style: italic;
-          margin-bottom: 1rem;
+        .divider {
+          height: 1px;
+          background: var(--green-dark);
+          margin: clamp(3rem, 8vw, 4.5rem) 0;
         }
 
-        .modal-sub {
+        .section-label {
+          font-size: 0.65rem;
+          letter-spacing: 0.28em;
+          color: var(--green-muted);
+          text-transform: uppercase;
+          margin-bottom: 1.6rem;
+        }
+
+        .steps { display: flex; flex-direction: column; gap: 1.6rem; }
+
+        .step {
+          display: grid;
+          grid-template-columns: 36px 1fr;
+          gap: 1.25rem;
+        }
+
+        .step-num {
+          font-size: 0.7rem;
+          color: var(--green-muted);
+          letter-spacing: 0.08em;
+          padding-top: 0.3rem;
+        }
+
+        .step h3 {
           font-size: 1.1rem;
-          color: var(--cream-dim);
+          font-weight: 300;
           font-style: italic;
-          line-height: 1.6;
-          margin-bottom: 2rem;
+          color: var(--cream);
+          margin-bottom: 0.4rem;
+        }
+
+        .step p {
+          font-size: 0.92rem;
+          color: var(--cream-dim);
+          line-height: 1.65;
+        }
+
+        .capture {
+          background: var(--deep);
+          border: 1px solid var(--green-dark);
+          border-radius: 4px;
+          padding: clamp(1.75rem, 5vw, 2.5rem);
+        }
+
+        .capture-line {
+          font-size: clamp(1.3rem, 3.4vw, 1.7rem);
+          font-weight: 300;
+          font-style: italic;
+          line-height: 1.4;
+          margin-bottom: 1.5rem;
         }
 
         input {
@@ -285,151 +251,187 @@ font-style: italic;
           color: var(--cream);
           font-family: inherit;
           font-size: 0.9rem;
-          padding: 1.2rem;
+          padding: 1.1rem;
           margin-bottom: 1rem;
           outline: none;
+          border-radius: 2px;
+        }
+        input::placeholder { color: var(--cream-dim); opacity: 0.65; }
+        input:disabled { opacity: 0.6; }
+
+        .capture-message {
+          margin-top: 1rem;
+          font-size: 0.95rem;
+          font-style: italic;
+          color: var(--green-pale);
+          line-height: 1.6;
+        }
+        .capture-message.is-error { color: #c98a6b; }
+
+        footer {
+          padding: clamp(3rem, 8vw, 4.5rem) 0 3rem;
+          text-align: center;
         }
 
-        input::placeholder {
+        .tagline {
+          font-size: 1rem;
+          font-style: italic;
           color: var(--cream-dim);
-          opacity: 0.65;
         }
 
-        @media (max-width: 640px) {
-          .step {
-            grid-template-columns: 40px 1fr;
-            gap: 1.5rem;
-          }
+        .meta {
+          margin-top: 1rem;
+          font-size: 0.72rem;
+          letter-spacing: 0.05em;
+          color: var(--green-muted);
+        }
+
+        @media (max-width: 480px) {
+          .step { grid-template-columns: 28px 1fr; gap: 1rem; }
         }
       `}</style>
 
-      <section className="hero">
-        <div className={`hero-bg ${visible ? "visible" : ""}`} />
+      <div className="wrap">
+        <div className={`topbar ${visible ? "visible" : ""}`}>
+          <div className="mark">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <ellipse cx="8" cy="7" rx="2.4" ry="2.7" fill="#d4c9b0" />
+              <ellipse cx="16" cy="7" rx="2.4" ry="2.7" fill="#d4c9b0" />
+              <circle cx="8" cy="6.6" r="1" fill="#0b1710" />
+              <circle cx="16" cy="6.6" r="1" fill="#0b1710" />
+              <path d="M4 13c0-2.2 3.6-4 8-4s8 1.8 8 4-3.6 5-8 5-8-2.8-8-5Z" fill="#d4c9b0" />
+            </svg>
+          </div>
+          <div className="wordmark">mySwamp</div>
+        </div>
 
-        <div className={`hero-content ${visible ? "visible" : ""}`}>
-          
+        <section className={`hero ${visible ? "visible" : ""}`}>
+          <h1 className="hero-headline">
+            what matters is
+            <br />
+            <em>what you do next.</em>
+          </h1>
 
-        <h1 className="hero-headline">
-  what matters is
-  <em> what you do next.</em>
-</h1>
-
-<p className="hero-subhead">
-  mySwamp turns a messy task dump into the exact thing you need to do the next.
-</p>
+          <p className="hero-lede">
+            mySwamp turns a messy task dump into the exact thing you need to do next.
+          </p>
+          <p className="hero-lede">
+            no tags, no dashboards to maintain — dump everything in, and the swamp
+            picks the one frog you actually need to deal with today.
+          </p>
 
           <div className="cta-group">
-           <button className="cta-primary" onClick={() => {
-  logEvent('cta_click');
-  setShowModal(true);
-}}>
-  notify me.
-</button>
-
+            <a
+              href="#notify"
+              className="cta-primary"
+              onClick={() => logEvent("cta_click")}
+            >
+              notify me.
+            </a>
             <a href="#how" className="cta-secondary">
               how it works
             </a>
           </div>
-        </div>
+        </section>
 
-        
-</section>
-      <section className="how" id="how">
-        <p className="section-label"> </p>
+        <div className="divider" />
 
-        <div className="steps">
-          <div className="step">
-            <span className="step-num">01</span>
-            <div>
-              <h3>dump your tasks.</h3>
-              <p>
-                everything in your head from the urgent, to the trivial, to the overdue.
-              </p>
+        <section id="how">
+          <p className="section-label">how it works</p>
+          <div className="steps">
+            <div className="step">
+              <span className="step-num">01</span>
+              <div>
+                <h3>dump your tasks.</h3>
+                <p>
+                  everything in your head from the urgent, to the trivial, to
+                  the overdue.
+                </p>
+              </div>
+            </div>
+
+            <div className="step">
+              <span className="step-num">02</span>
+              <div>
+                <h3>the frog surfaces.</h3>
+                <p>chosen by the swamp.</p>
+              </div>
+            </div>
+
+            <div className="step">
+              <span className="step-num">03</span>
+              <div>
+                <h3>done. or not yet.</h3>
+                <p>
+                  two options. mySwamp tracks what you avoid, and it
+                  remembers.
+                </p>
+              </div>
+            </div>
+
+            <div className="step">
+              <span className="step-num">04</span>
+              <div>
+                <h3>one thing done.</h3>
+                <p>the weight of everything else eases up.</p>
+              </div>
             </div>
           </div>
+        </section>
 
-          <div className="step">
-            <span className="step-num">02</span>
-            <div>
-              <h3>the frog surfaces.</h3>
-              <p>chosen by the swamp.</p>
-            </div>
-          </div>
+        <div className="divider" />
 
-          <div className="step">
-            <span className="step-num">03</span>
-            <div>
-              <h3>done. or not yet.</h3>
-              <p>
-                two options. mySwamp tracks what you avoid, and it remembers.
+        <section className="capture" id="notify">
+          {!formDone ? (
+            <>
+              <p className="capture-line">
+                your first frog? leave your email to get notified below.
               </p>
-            </div>
-          </div>
 
-          <div className="step">
-            <span className="step-num">04</span>
-            <div>
-              <h3>one thing done.</h3>
-              <p>
-                the weight of everything else eases up.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
+              <form onSubmit={handleSubmit} noValidate>
+                <input
+                  type="email"
+                  placeholder="you@somewhere.com"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  aria-label="Email address"
+                  aria-describedby={message ? "waitlist-message" : undefined}
+                  disabled={submitState === "submitting"}
+                />
 
-      {showModal && (
-        <div className="modal">
-          <div className="modal-inner">
-            <button
-              className="back-button"
-              onClick={() => {
-                setShowModal(false);
-                setSubmitState("idle");
-                setMessage("");
-              }}
-            >
-              ← back
-            </button>
+                <button
+                  className="cta-primary"
+                  type="submit"
+                  disabled={submitState === "submitting"}
+                >
+                  {submitState === "submitting" ? "entering..." : "enter"}
+                </button>
+              </form>
 
-            {submitState !== "pending" && submitState !== "confirmed" ? (
-              <>
-                <p className="modal-line">your first frog? leave your email to get notified below.</p>
+              {message && (
+                <p
+                  className={`capture-message ${
+                    submitState === "error" ? "is-error" : ""
+                  }`}
+                  id="waitlist-message"
+                  role="alert"
+                >
+                  {message}
+                </p>
+              )}
+            </>
+          ) : (
+            <p className="capture-message" role="status">
+              {message}
+            </p>
+          )}
+        </section>
 
-                <form onSubmit={handleSubmit} noValidate>
-                  <input
-                    type="email"
-                    placeholder="you@somewhere.com"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    aria-label="Email address"
-                    aria-describedby={message ? "waitlist-message" : undefined}
-                    disabled={submitState === "submitting"}
-                  />
-
-                  <button
-                    className="cta-primary"
-                    type="submit"
-                    disabled={submitState === "submitting"}
-                  >
-                    {submitState === "submitting" ? "entering..." : "enter"}
-                  </button>
-                </form>
-
-                {message && (
-                  <p className="modal-sub" id="waitlist-message" role="alert">
-                    {message}
-                  </p>
-                )}
-              </>
-            ) : (
-              <p className="modal-line" role="status">
-                {message}
-              </p>
-            )}
-          </div>
-        </div>
-      )}
+        <footer>
+          <p className="tagline">no streaks. no second brain. just today&apos;s frog.</p>
+          <p className="meta">mySwamp © 2026</p>
+        </footer>
+      </div>
     </>
   );
 }
