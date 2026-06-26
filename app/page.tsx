@@ -158,11 +158,7 @@ margin-right: auto;
         .hero-lede + .hero-lede { margin-top: 0.9rem; }
 
      
-        .divider {
-          height: 1px;
-          background: var(--green-dark);
-          margin: clamp(3rem, 8vw, 4.5rem) 0;
-        }
+       
 
         .section-label {
           font-size: 0.65rem;
