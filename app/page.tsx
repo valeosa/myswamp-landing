@@ -317,19 +317,10 @@ export default function Home() {
 </p>
 
 <p className="hero-lede">
-  no tags. no dashboards. no streaks. just one frog surfaced from the mess.
+  no tags. no dashboards. no streaks. just one frog surfaced.
 </p>
 
-          <div className="cta-group">
-            <a
-              href="#notify"
-              className="cta-primary"
-              onClick={() => logEvent("cta_click")}
-            >
-              get early access.
-            </a>
-           
-          </div>
+        
         </section>
 
         
@@ -358,7 +349,7 @@ export default function Home() {
                   type="submit"
                   disabled={submitState === "submitting"}
                 >
-                  {submitState === "submitting" ? "entering..." : "enter"}
+                  {submitState === "submitting" ? "entering..." : "get early access"}
                 </button>
               </form>
 
