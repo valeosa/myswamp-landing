@@ -78,25 +78,27 @@ export default function Home() {
 
         <div className="hero-copy">
           <h1>
-            modern software is becoming a third space.{"\u00a0"}
-            <em>so why don&apos;t more productivity apps feel like it?</em>
+            modern productivity apps have become a chore.{"\u00a0"}
+            <em>so I'm building a place.</em>
           </h1>
 
+<p>
+welcome to mySwamp.
+</p>
+        
           <p>
-            I didn&apos;t want to build another tool so I&apos;m building a place:
-            mySwamp.
-          </p>
-
-          <p>
-            instead of just tracking habits, you dump your tasks into the swamp,
-            and out of it comes the slimy, undeniable &lsquo;frog&rsquo;: the
+            instead of just managing habits, you dump your tasks into the swamp,
+            and out comes a single, undeniable &lsquo;frog&rsquo;: the
             exact thing you need to do next.
           </p>
 
           <p>
-            two options; done or not yet. either way, it sinks into your memory,
-            just like sediment. no tags. no dashboards. no streaks.
-          </p>
+            two options: done or not yet. either way, it sinks out of sight, 
+           leaving your mind clear. 
+ </p>
+
+<p>no tags. no dashboards. no streaks.
+</p>
         </div>
 
         <section className="access-card" aria-label="early access">
@@ -105,11 +107,11 @@ export default function Home() {
               @
             </div>
             <div>
-              <h2>{isDone ? "Thanks for joining the waitlist" : "No second brain. A second place."}</h2>
+              <h2>{isDone ? "Thanks for joining the waitlist" : "no second brain. a second place."}</h2>
               <p>
                 {isDone
-                  ? "Check your email to confirm your spot. In the meantime, pass the waterline to someone who needs one frog."
-                  : "Get early access and confirm your spot when mySwamp opens."}
+                  ? "check your email to confirm your spot. In the meantime, pass the waterline to someone who needs one frog."
+                  : "get early access and confirm your spot when mySwamp opens."}
               </p>
             </div>
           </div>
@@ -133,7 +135,7 @@ export default function Home() {
               />
 
               <button type="submit" disabled={isWaiting}>
-                {isWaiting ? "sending..." : "get early access"}
+                {isWaiting ? "sending..." : "get early access."}
               </button>
             </form>
           ) : (
