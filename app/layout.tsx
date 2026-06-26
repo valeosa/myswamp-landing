@@ -14,6 +14,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://myswamp.space"),
   title: "mySwamp",
   description: "dump your tasks. get your frog.",
   openGraph: {

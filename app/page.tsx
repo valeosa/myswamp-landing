@@ -1,27 +1,15 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import Image from "next/image";
+import { useState } from "react";
 
 type SubmitState = "idle" | "submitting" | "pending" | "confirmed" | "error";
 
-function logEvent(name: string, properties?: Record<string, unknown>) {
-  fetch("/api/track", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ name, properties }),
-  }).catch(() => {});
-}
-
 export default function Home() {
-  const [visible, setVisible] = useState(false);
   const [email, setEmail] = useState("");
   const [submitState, setSubmitState] = useState<SubmitState>("idle");
   const [message, setMessage] = useState("");
-
-  useEffect(() => {
-    const timer = setTimeout(() => setVisible(true), 100);
-    return () => clearTimeout(timer);
-  }, []);
+  const [copyState, setCopyState] = useState<"idle" | "copied" | "error">("idle");
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -33,7 +21,6 @@ export default function Home() {
       return;
     }
 
-    logEvent("waitlist_submit_attempt");
     setSubmitState("submitting");
     setMessage("");
 
@@ -53,7 +40,6 @@ export default function Home() {
       }
 
       setSubmitState(result.status);
-      logEvent("waitlist_submit_success", { status: result.status });
       setMessage(result.message ?? "");
     } catch {
       setSubmitState("error");
@@ -61,315 +47,136 @@ export default function Home() {
     }
   };
 
-  const formDone = submitState === "pending" || submitState === "confirmed";
+  const copyLink = async () => {
+    try {
+      await navigator.clipboard.writeText("https://myswamp.space");
+      setCopyState("copied");
+      window.setTimeout(() => setCopyState("idle"), 1800);
+    } catch {
+      setCopyState("error");
+      window.setTimeout(() => setCopyState("idle"), 1800);
+    }
+  };
+
+  const isWaiting = submitState === "submitting";
+  const isDone = submitState === "pending" || submitState === "confirmed";
 
   return (
-    <>
-      <style>{`
-        * { box-sizing: border-box; margin: 0; padding: 0; }
+    <main className="landing-page">
+      <section className="landing-shell" aria-label="mySwamp waitlist">
+        <header className="brand-row">
+          <Image
+            src="/swamp-favicon.png"
+            alt=""
+            width={58}
+            height={58}
+            priority
+            className="brand-mark"
+          />
+          <span className="brand-name">mySwamp</span>
+        </header>
 
-        :root {
-          --black: #07100b;
-          --deep: #0b1710;
-          --green-dark: #1a2a1a;
-          --green-muted: #4a6b4a;
-          --green-pale: #8aab8a;
-          --cream: #d4c9b0;
-          --cream-dim: #a09080;
-        }
-
-        html { scroll-behavior: smooth; }
-
-        body {
-          background: var(--black);
-          color: var(--cream);
-          font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
-        }
-
-        a { color: var(--green-pale); }
-
-        .wrap {
-          max-width: 640px;
-          margin: 0 auto;
-          padding: 0 clamp(1.5rem, 6vw, 2.5rem);
-        }
-
-        .topbar {
-          display: flex;
-          align-items: center;
-          gap: 0.75rem;
-          padding: 2.5rem 0 0;
-          opacity: 0;
-          transform: translateY(8px);
-          transition: opacity 1s ease, transform 1s ease;
-        }
-        .topbar.visible { opacity: 1; transform: translateY(0); }
-
-        .mark {
-          width: 32px;
-          height: 32px;
-          border-radius: 9px;
-          background: var(--green-dark);
-          border: 1px solid var(--green-muted);
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          flex-shrink: 0;
-        }
-        .mark svg { width: 18px; height: 18px; }
-
-        .wordmark {
-          font-size: 0.95rem;
-          letter-spacing: -0.01em;
-        }
-
-        .hero {
-          padding: clamp(3.5rem, 10vw, 6rem) 0 1rem;
-          opacity: 0;
-          transform: translateY(20px);
-          transition: opacity 1.1s ease 0.15s, transform 1.1s ease 0.15s;
-           text-align: center;
-        }
-        .hero.visible { opacity: 1; transform: translateY(0); }
-
-        .hero-headline {
-          font-size: clamp(2.4rem, 6vw, 3.6rem);
-          font-weight: 300;
-          line-height: 1.08;
-          letter-spacing: -0.02em;
-          color: var(--cream);
-        }
-
-        .hero-headline em {
-        
-          color: var(--cream);
-        }
-
-        .hero-lede {
-          margin-top: 1.5rem;
-          max-width: 30rem;
-          font-size: 1rem;
-          line-height: 1.7;
-          color: #c4b89f;
-margin-left: auto;
-margin-right: auto;
-        }
-
-        .hero-lede + .hero-lede { margin-top: 0.9rem; }
-
-     
-       
-
-        .section-label {
-          font-size: 0.65rem;
-          letter-spacing: 0.28em;
-          color: var(--green-muted);
-          text-transform: uppercase;
-          margin-bottom: 1.6rem;
-        }
-
-       .cta-group {
-  margin-top: 2rem;
-  display: flex;
-  gap: 1.25rem;
-  flex-wrap: wrap;
-  align-items: center;
-}
-
-.cta-primary {
-  width: 100%;
-  font-weight: 300;
-  font-size: 0.8rem;
-  letter-spacing: 0.12em;
-  color: var(--black);
-  background: color: var(--cream);
-  border: 1px solid rgba(255,255,255,0.08);
-  padding: 1rem 2.1rem;
-  cursor: pointer;
-  text-decoration: none;
-  display: inline-block;
-  text-align: center;
-
-  border-radius: 14px;
-
-  box-shadow:
-    inset 0 1px 0 rgba(255,255,255,0.18),
-    0 8px 24px rgba(0,0,0,0.18);
-
-  transition: transform .15s ease, box-shadow .2s ease;
-}
-
-.cta-primary:hover {
-  transform: translateY(-1px);
-  box-shadow:
-    inset 0 1px 0 rgba(255,255,255,0.22),
-    0 12px 28px rgba(0,0,0,0.22);
-}
-
-.cta-secondary {
-  font-family: inherit;
-  font-size: 0.75rem;
-  letter-spacing: 0.1em;
-  color: var(--green-pale);
-  text-decoration: none;
-  opacity: 0.8;
-}
-
-     .capture {
-  background: rgba(11, 23, 16, .75);
-  border: 1px solid rgba(74,107,74,.35);
-  border-radius: 20px;
-  padding: clamp(1.75rem, 5vw, 2.5rem);
-  backdrop-filter: blur(10px);
-
-  box-shadow:
-    inset 0 1px 0 rgba(255,255,255,.03),
-    0 20px 60px rgba(0,0,0,.25);
-}
-
-        .capture-line {
-          font-size: clamp(1.3rem, 3.4vw, 1.7rem);
-          font-weight: 300;
-          
-          line-height: 1.4;
-          margin-bottom: 1.5rem;
-        }
-
-        input {
-          width: 100%;
-          background: transparent;
-          border: 1px solid var(--green-pale);
-          color: var(--cream);
-          font-family: inherit;
-          font-size: 0.9rem;
-          padding: 1.1rem;
-          margin-bottom: 1rem;
-          outline: none;
-          border-radius: 14px;
-        }
-        input::placeholder { color: var(--cream-dim); opacity: 0.65; }
-        input:disabled { opacity: 0.6; }
-
-        .capture-message {
-          margin-top: 1rem;
-          font-size: 0.95rem;
-          font-style: italic;
-          color: var(--green-pale);
-          line-height: 1.6;
-        }
-        .capture-message.is-error { color: #c98a6b; }
-
-        footer {
-          padding: clamp(3rem, 8vw, 4.5rem) 0 3rem;
-          text-align: center;
-        }
-
-        .tagline {
-          font-size: 1rem;
-          font-style: italic;
-          color: var(--cream-dim);
-        }
-
-        .meta {
-          margin-top: 1rem;
-          font-size: 0.72rem;
-          letter-spacing: 0.05em;
-          color: var(--green-muted);
-        }
-
-        @media (max-width: 480px) {
-          .step { grid-template-columns: 28px 1fr; gap: 1rem; }
-        }
-      `}</style>
-
-    
- <div className="wrap">
-        <div className={`topbar ${visible ? "visible" : ""}`}>
-          <div className="mark">
-            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <ellipse cx="8" cy="7" rx="2.4" ry="2.7" fill="#d4c9b0" />
-              <ellipse cx="16" cy="7" rx="2.4" ry="2.7" fill="#d4c9b0" />
-              <circle cx="8" cy="6.6" r="1" fill="#0b1710" />
-              <circle cx="16" cy="6.6" r="1" fill="#0b1710" />
-              <path d="M4 13c0-2.2 3.6-4 8-4s8 1.8 8 4-3.6 5-8 5-8-2.8-8-5Z" fill="#d4c9b0" />
-            </svg>
-          </div>
-          <div className="wordmark">mySwamp</div>
-        </div>
-
-        <section className={`hero ${visible ? "visible" : ""}`}>
-          <h1 className="hero-headline">
-            what matter is 
+        <div className="hero-copy">
+          <h1>
+            what matters is
             <br />
             <em>what you do next.</em>
           </h1>
 
-         <p className="hero-lede">
-  mySwamp turns a messy task dump 
-into the exact thing you need to do next: the 'frog'.
-</p>
+          <p>
+            mySwamp turns a messy task dump into the exact thing you need to do
+            next: the frog.
+          </p>
 
-<p className="hero-lede">
-  two options: done, or not yet. either way, it sinks into your water&apos;s memory. 
-  no tags. no dashboards. no streaks. 
-</p>
- </section>
-        
-        
-        
-        <div className="divider" />
+          <p>
+            two options: done, or not yet. either way, it sinks into your
+            water&apos;s memory. no tags. no dashboards. no streaks.
+          </p>
+        </div>
 
-        <section className="capture" id="notify">
-          {!formDone ? (
-            <>
-              <p className="capture-line">
-                your first frog? leave your email to get notified below.
+        <div className="signal-card" aria-label="mySwamp promise">
+          <Image src="/swamp-favicon.png" alt="" width={44} height={44} />
+          <div>
+            <div className="signal-title">One frog. No second brain.</div>
+            <p>Dump the noise. Let the swamp surface what comes next.</p>
+          </div>
+          <span aria-hidden="true">now</span>
+        </div>
+
+        <section className="access-card" aria-label="early access">
+          <div className="access-heading">
+            <div className="mail-mark" aria-hidden="true">
+              @
+            </div>
+            <div>
+              <h2>{isDone ? "Thanks for joining the waitlist" : "Be first into the swamp"}</h2>
+              <p>
+                {isDone
+                  ? "Check your email to confirm your spot. In the meantime, pass the waterline to someone who needs one frog."
+                  : "Get early access and confirm your spot when mySwamp opens."}
               </p>
+            </div>
+            <span aria-hidden="true">now</span>
+          </div>
 
-              <form onSubmit={handleSubmit} noValidate>
-                <input
-                  type="email"
-                  placeholder="you@somewhere.com"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  aria-label="Email address"
-                  aria-describedby={message ? "waitlist-message" : undefined}
-                  disabled={submitState === "submitting"}
-                />
+          {!isDone ? (
+            <form onSubmit={handleSubmit} noValidate className="waitlist-form">
+              <input
+                type="email"
+                placeholder="myswamp@somewhere.com"
+                value={email}
+                onChange={(event) => {
+                  setEmail(event.target.value);
+                  if (submitState === "error") {
+                    setSubmitState("idle");
+                    setMessage("");
+                  }
+                }}
+                aria-label="Email address"
+                aria-describedby={message ? "waitlist-message" : undefined}
+                disabled={isWaiting}
+              />
 
-                <button
-                  className="cta-primary"
-                  type="submit"
-                  disabled={submitState === "submitting"}
-                >
-                  {submitState === "submitting" ? "entering..." : "get early access"}
-                </button>
-              </form>
-
-              {message && (
-                <p
-                  className={`capture-message ${
-                    submitState === "error" ? "is-error" : ""
-                  }`}
-                  id="waitlist-message"
-                  role="alert"
-                >
-                  {message}
-                </p>
-              )}
-            </>
+              <button type="submit" disabled={isWaiting || !email.trim()}>
+                {isWaiting ? "sending..." : "get early access"}
+              </button>
+            </form>
           ) : (
-            <p className="capture-message" role="status">
+            <button className="copy-link" type="button" onClick={copyLink}>
+              {copyState === "copied"
+                ? "copied"
+                : copyState === "error"
+                  ? "copy failed"
+                  : "copy link"}
+            </button>
+          )}
+
+          {message && (
+            <p
+              className={submitState === "error" ? "form-message error" : "form-message"}
+              id="waitlist-message"
+              role={submitState === "error" ? "alert" : "status"}
+            >
               {message}
             </p>
           )}
         </section>
 
-        <footer>
-       
-          <p className="meta">mySwamp © 2026</p>
+        <p className="closing-line">because one meaningful thing is enough.</p>
+
+        <footer className="landing-footer">
+          <span>mySwamp © 2026</span>
+          <nav aria-label="legal links">
+            <a href="/terms">terms</a>
+            <span>·</span>
+            <a href="/privacy">privacy</a>
+            <span>·</span>
+            <a href="https://threads.net/@myswamp" rel="noreferrer">
+              threads
+            </a>
+          </nav>
         </footer>
-      </div>
-    </>
+      </section>
+    </main>
   );
 }

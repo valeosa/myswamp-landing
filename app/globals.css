@@ -1,60 +1,343 @@
 @import "tailwindcss";
 
 :root {
-  --background: #07100b;
-  --foreground: #c8d8b8;
+  --blackwater: #070d09;
+  --surface: #111914;
+  --surface-soft: #172018;
+  --surface-field: #202a21;
+  --line: rgba(168, 196, 154, 0.18);
+  --line-strong: rgba(180, 214, 170, 0.28);
+  --text: #d7e5ca;
+  --text-soft: #b9c8ae;
+  --text-dim: #9cad92;
+  --text-faint: #728064;
+  --button: #d0dfbf;
+  --button-text: #11170f;
+  --warning: #d2ad84;
+  color-scheme: dark;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
+  --color-background: var(--blackwater);
+  --color-foreground: var(--text);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
 
+* {
+  box-sizing: border-box;
+}
+
+html {
+  background: var(--blackwater);
+}
+
 body {
-  background: var(--background);
-  color: var(--foreground);
+  min-height: 100vh;
+  margin: 0;
+  background: var(--blackwater);
+  color: var(--text);
   font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
 }
-.modal {
-  position: fixed;
-  inset: 0;
-  background: rgba(8,10,8,0.92);
+
+button,
+input,
+a {
+  font: inherit;
+}
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+input {
+  color-scheme: dark;
+  caret-color: var(--text);
+}
+
+input::placeholder {
+  color: var(--text-faint);
+  opacity: 1;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus {
+  border-color: var(--line-strong) !important;
+  -webkit-text-fill-color: var(--text) !important;
+  caret-color: var(--text) !important;
+  -webkit-box-shadow: 0 0 0 1000px var(--surface-field) inset !important;
+  box-shadow: 0 0 0 1000px var(--surface-field) inset !important;
+}
+
+::selection {
+  background: #32452f;
+  color: var(--text);
+}
+
+.landing-page {
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at 78% 14%, rgba(38, 67, 43, 0.24), transparent 30rem),
+    linear-gradient(180deg, #08100b 0%, var(--blackwater) 100%);
+}
+
+.landing-shell {
+  width: min(100%, 760px);
+  min-height: 100vh;
+  margin: 0 auto;
+  padding: clamp(2rem, 7vw, 4.5rem) clamp(1.45rem, 5vw, 2.25rem) 2rem;
+}
+
+.brand-row {
   display: flex;
   align-items: center;
-  justify-content: center;
-  z-index: 100;
+  gap: 1.15rem;
+  margin-bottom: clamp(4rem, 12vw, 7.5rem);
 }
 
-.modal-inner {
-  max-width: 420px;
-  width: 90%;
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
+.brand-mark {
+  width: 58px;
+  height: 58px;
+  border: 1px solid var(--line-strong);
+  border-radius: 17px;
+  object-fit: cover;
+  background: var(--surface);
 }
 
-.modal-line {
-  font-size: clamp(1.8rem, 4vw, 2.5rem);
+.brand-name {
+  color: var(--text);
+  font-size: clamp(1.9rem, 5vw, 2.55rem);
+  letter-spacing: -0.045em;
+}
+
+.hero-copy {
+  display: grid;
+  gap: clamp(1.9rem, 4vw, 2.45rem);
+  margin-bottom: clamp(2.4rem, 7vw, 3.6rem);
+}
+
+.hero-copy h1 {
+  margin: 0;
+  color: var(--text);
+  font-size: clamp(2.85rem, 10vw, 5.65rem);
+  font-weight: 400;
+  letter-spacing: -0.075em;
+  line-height: 1.05;
+}
+
+.hero-copy h1 em {
+  color: var(--text);
+  font-style: italic;
   font-weight: 300;
-  color: var(--cream);
-  font-style: italic;
 }
 
-.modal-sub {
+.hero-copy p {
+  max-width: 700px;
+  margin: 0;
+  color: var(--text-soft);
+  font-size: clamp(1.35rem, 4.6vw, 2rem);
+  font-weight: 400;
+  letter-spacing: -0.045em;
+  line-height: 1.52;
+}
+
+.signal-card,
+.access-card {
+  border: 1px solid var(--line);
+  border-radius: 28px;
+  background: var(--surface);
+}
+
+.signal-card {
+  display: grid;
+  grid-template-columns: 44px 1fr auto;
+  gap: 1rem;
+  align-items: start;
+  margin-bottom: 1rem;
+  padding: 1.1rem;
+}
+
+.signal-card img {
+  border-radius: 12px;
+}
+
+.signal-title {
+  color: var(--text);
+  font-size: clamp(1rem, 3.2vw, 1.2rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+}
+
+.signal-card p,
+.access-heading p,
+.form-message,
+.closing-line,
+.landing-footer {
+  color: var(--text-dim);
+}
+
+.signal-card p,
+.access-heading p {
+  margin: 0.2rem 0 0;
+  font-size: clamp(1rem, 3.5vw, 1.25rem);
+  letter-spacing: -0.035em;
+  line-height: 1.38;
+}
+
+.signal-card > span,
+.access-heading > span {
+  color: var(--text-faint);
   font-size: 1rem;
-  color: var(--cream-dim);
-  font-style: italic;
 }
 
-.modal-inner input {
-  background: var(--deep);
-  border: 1px solid var(--green-muted);
-  padding: 0.8rem 1rem;
-  color: var(--cream);
-  font-family: inherit;
-  font-size: 0.8rem;
-  outline: none;
+.access-card {
+  padding: clamp(1rem, 4vw, 1.55rem);
+}
+
+.access-heading {
+  display: grid;
+  grid-template-columns: 44px 1fr auto;
+  gap: 1rem;
+  align-items: start;
+  margin-bottom: 1.15rem;
+}
+
+.mail-mark {
+  display: grid;
+  width: 44px;
+  height: 44px;
+  place-items: center;
+  border: 1px solid rgba(183, 214, 169, 0.2);
+  border-radius: 12px;
+  background: var(--surface-field);
+  color: var(--text);
+  font-size: 1.35rem;
+  line-height: 1;
+}
+
+.access-heading h2 {
+  margin: 0;
+  color: var(--text);
+  font-size: clamp(1rem, 3.2vw, 1.2rem);
+  font-weight: 700;
+  letter-spacing: -0.035em;
+}
+
+.waitlist-form {
+  display: grid;
+  gap: 0.9rem;
+}
+
+.waitlist-form input,
+.waitlist-form button,
+.copy-link {
   width: 100%;
+  border-radius: 13px;
+  padding: 1.05rem 1.1rem;
+  font-size: clamp(1.05rem, 3.5vw, 1.35rem);
+  letter-spacing: -0.03em;
+}
+
+.waitlist-form input {
+  border: 1px solid transparent;
+  background: var(--surface-field);
+  color: var(--text);
+  outline: none;
+}
+
+.waitlist-form input:focus {
+  border-color: var(--line-strong);
+}
+
+.waitlist-form button,
+.copy-link {
+  border: 0;
+  background: var(--button);
+  color: var(--button-text);
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.waitlist-form button:disabled {
+  cursor: default;
+  opacity: 0.58;
+}
+
+.copy-link {
+  margin-top: 0.9rem;
+  text-transform: lowercase;
+}
+
+.form-message {
+  margin: 1rem 0 0;
+  font-size: clamp(0.98rem, 3vw, 1.1rem);
+  line-height: 1.45;
+}
+
+.form-message.error {
+  color: var(--warning);
+}
+
+.closing-line {
+  margin: 1.65rem 0 4rem;
+  text-align: center;
+  font-size: clamp(1rem, 3.6vw, 1.3rem);
+  letter-spacing: -0.03em;
+}
+
+.landing-footer {
+  display: flex;
+  justify-content: space-between;
+  gap: 1.25rem;
+  border-top: 1px solid rgba(168, 196, 154, 0.14);
+  padding-top: 1.55rem;
+  font-size: clamp(0.92rem, 3vw, 1.05rem);
+}
+
+.landing-footer nav {
+  display: flex;
+  gap: 0.45rem;
+  white-space: nowrap;
+}
+
+.landing-footer a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.landing-footer a:hover {
+  color: var(--text-soft);
+}
+
+@media (max-width: 520px) {
+  .landing-shell {
+    padding-top: 4.15rem;
+  }
+
+  .brand-row {
+    margin-bottom: 4.5rem;
+  }
+
+  .brand-mark {
+    width: 52px;
+    height: 52px;
+    border-radius: 16px;
+  }
+
+  .signal-card,
+  .access-heading {
+    grid-template-columns: 44px 1fr;
+  }
+
+  .signal-card > span,
+  .access-heading > span {
+    display: none;
+  }
+
+  .landing-footer {
+    align-items: flex-start;
+    flex-direction: column;
+  }
 }
