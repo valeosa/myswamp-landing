@@ -81,10 +81,6 @@ export default function Home() {
             modern productivity apps have become a chore.{"\u00a0"}
             <em>so I'm building a place.</em>
           </h1>
-
-<p>
-welcome to mySwamp.
-</p>
         
           <p>
             instead of just managing habits, you dump your tasks into the swamp,
@@ -97,7 +93,7 @@ welcome to mySwamp.
            leaving your mind clear. 
  </p>
 
-<p>no tags. no dashboards. no streaks.
+<p>no guilt. no dashboards. no streaks. just each moment.
 </p>
         </div>
 
@@ -107,7 +103,7 @@ welcome to mySwamp.
               @
             </div>
             <div>
-              <h2>{isDone ? "Thanks for joining the waitlist" : "no second brain. a second place."}</h2>
+              <h2>{isDone ? "Thanks for joining the waitlist" : "Not a second brain, but a second place."}</h2>
               <p>
                 {isDone
                   ? "check your email to confirm your spot. In the meantime, pass the waterline to someone who needs one frog."
