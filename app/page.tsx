@@ -312,13 +312,13 @@ export default function Home() {
             <em>what you do next.</em>
           </h1>
 
-          <p className="hero-lede">
-            mySwamp turns a messy task dump into the exact thing you need to do next.
-          </p>
-          <p className="hero-lede">
-            no tags, no dashboards to maintain — dump everything in, and the swamp
-            picks the one frog you actually need to deal with today.
-          </p>
+         <p className="hero-lede">
+  mySwamp turns a messy task dump into the exact thing you need to do next.
+</p>
+
+<p className="hero-lede">
+  no tags. no dashboards. no streaks. just one frog surfaced from the mess.
+</p>
 
           <div className="cta-group">
             <a
@@ -326,59 +326,13 @@ export default function Home() {
               className="cta-primary"
               onClick={() => logEvent("cta_click")}
             >
-              notify me.
+              get early access.
             </a>
-            <a href="#how" className="cta-secondary">
-              how it works
-            </a>
+           
           </div>
         </section>
 
-        <div className="divider" />
-
-        <section id="how">
-          <p className="section-label">how it works</p>
-          <div className="steps">
-            <div className="step">
-              <span className="step-num">01</span>
-              <div>
-                <h3>dump your tasks.</h3>
-                <p>
-                  everything in your head from the urgent, to the trivial, to
-                  the overdue.
-                </p>
-              </div>
-            </div>
-
-            <div className="step">
-              <span className="step-num">02</span>
-              <div>
-                <h3>the frog surfaces.</h3>
-                <p>chosen by the swamp.</p>
-              </div>
-            </div>
-
-            <div className="step">
-              <span className="step-num">03</span>
-              <div>
-                <h3>done. or not yet.</h3>
-                <p>
-                  two options. mySwamp tracks what you avoid, and it
-                  remembers.
-                </p>
-              </div>
-            </div>
-
-            <div className="step">
-              <span className="step-num">04</span>
-              <div>
-                <h3>one thing done.</h3>
-                <p>the weight of everything else eases up.</p>
-              </div>
-            </div>
-          </div>
-        </section>
-
+        
         <div className="divider" />
 
         <section className="capture" id="notify">
