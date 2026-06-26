@@ -13,8 +13,10 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://myswamp-landing.vercel.app";
+
 export const metadata: Metadata = {
-  metadataBase: new URL("https://myswamp.space"),
+  metadataBase: new URL(siteUrl),
   title: "mySwamp",
   description: "dump your tasks. get your frog.",
   openGraph: {
