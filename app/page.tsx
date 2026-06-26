@@ -154,38 +154,7 @@ export default function Home() {
 
         .hero-lede + .hero-lede { margin-top: 0.9rem; }
 
-        .cta-group {
-          margin-top: 2rem;
-          display: flex;
-          gap: 1.25rem;
-          flex-wrap: wrap;
-          align-items: center;
-        }
-
-        .cta-primary {
-          font-family: inherit;
-          font-size: 0.8rem;
-          letter-spacing: 0.12em;
-          color: var(--black);
-          background: var(--cream);
-          border: none;
-          padding: 0.95rem 2.1rem;
-          cursor: pointer;
-          text-decoration: none;
-          display: inline-block;
-          border-radius: 2px;
-        }
-        .cta-primary:disabled { opacity: 0.55; cursor: default; }
-
-        .cta-secondary {
-          font-family: inherit;
-          font-size: 0.75rem;
-          letter-spacing: 0.1em;
-          color: var(--green-pale);
-          text-decoration: none;
-          opacity: 0.8;
-        }
-
+     
         .divider {
           height: 1px;
           background: var(--green-dark);
@@ -200,34 +169,7 @@ export default function Home() {
           margin-bottom: 1.6rem;
         }
 
-        .steps { display: flex; flex-direction: column; gap: 1.6rem; }
-
-        .step {
-          display: grid;
-          grid-template-columns: 36px 1fr;
-          gap: 1.25rem;
-        }
-
-        .step-num {
-          font-size: 0.7rem;
-          color: var(--green-muted);
-          letter-spacing: 0.08em;
-          padding-top: 0.3rem;
-        }
-
-        .step h3 {
-          font-size: 1.1rem;
-          font-weight: 300;
-          font-style: italic;
-          color: var(--cream);
-          margin-bottom: 0.4rem;
-        }
-
-        .step p {
-          font-size: 0.92rem;
-          color: var(--cream-dim);
-          line-height: 1.65;
-        }
+       
 
         .capture {
           background: var(--deep);
@@ -239,7 +181,7 @@ export default function Home() {
         .capture-line {
           font-size: clamp(1.3rem, 3.4vw, 1.7rem);
           font-weight: 300;
-          font-style: italic;
+          
           line-height: 1.4;
           margin-bottom: 1.5rem;
         }
