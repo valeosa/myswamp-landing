@@ -130,7 +130,7 @@ input:-webkit-autofill:focus {
 .hero-copy h1 em {
   color: var(--text);
   font-style: italic;
-  font-weight: 400;
+  font-weight: 650;
 }
 
 .hero-copy p {

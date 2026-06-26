@@ -78,8 +78,8 @@ export default function Home() {
 
         <div className="hero-copy">
           <h1>
-            modern software is becoming a third space.{" "}
-            <em>so why don&apos;t more apps feel like it?</em>
+            modern software is becoming a third space.{"\u00a0"}
+            <em>so why don&apos;t more productivity apps feel like it?</em>
           </h1>
 
           <p>
