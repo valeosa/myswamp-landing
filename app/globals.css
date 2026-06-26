@@ -2,9 +2,9 @@
 
 :root {
   --blackwater: #070d09;
-  --surface: #111914;
-  --surface-soft: #172018;
-  --surface-field: #202a21;
+  --surface: #111912;
+  --surface-soft: #151e16;
+  --surface-field: #1d271e;
   --line: rgba(168, 196, 154, 0.18);
   --line-strong: rgba(180, 214, 170, 0.28);
   --text: #d7e5ca;
@@ -78,53 +78,53 @@ input:-webkit-autofill:focus {
 
 .landing-page {
   min-height: 100vh;
-  background:
-    radial-gradient(circle at 78% 14%, rgba(38, 67, 43, 0.24), transparent 30rem),
-    linear-gradient(180deg, #08100b 0%, var(--blackwater) 100%);
+  background: var(--blackwater);
 }
 
 .landing-shell {
-  width: min(100%, 760px);
+  width: min(100%, 690px);
   min-height: 100vh;
   margin: 0 auto;
-  padding: clamp(2rem, 7vw, 4.5rem) clamp(1.45rem, 5vw, 2.25rem) 2rem;
+  padding: clamp(2.2rem, 6vw, 3.4rem) clamp(1.4rem, 5vw, 2rem) 2rem;
 }
 
 .brand-row {
   display: flex;
-  align-items: center;
-  gap: 1.15rem;
-  margin-bottom: clamp(4rem, 12vw, 7.5rem);
+  align-items: flex-start;
+  flex-direction: column;
+  gap: 1.4rem;
+  margin-bottom: clamp(3.25rem, 10vw, 5.8rem);
 }
 
 .brand-mark {
-  width: 58px;
-  height: 58px;
-  border: 1px solid var(--line-strong);
-  border-radius: 17px;
+  width: 48px;
+  height: 48px;
+  border: 1px solid var(--line);
+  border-radius: 14px;
   object-fit: cover;
   background: var(--surface);
 }
 
 .brand-name {
   color: var(--text);
-  font-size: clamp(1.9rem, 5vw, 2.55rem);
+  font-size: clamp(2rem, 5vw, 2.6rem);
+  font-weight: 650;
   letter-spacing: -0.045em;
 }
 
 .hero-copy {
   display: grid;
-  gap: clamp(1.9rem, 4vw, 2.45rem);
-  margin-bottom: clamp(2.4rem, 7vw, 3.6rem);
+  gap: clamp(1.55rem, 4vw, 2.15rem);
+  margin-bottom: clamp(2.25rem, 6vw, 3.2rem);
 }
 
 .hero-copy h1 {
   margin: 0;
   color: var(--text);
-  font-size: clamp(2.85rem, 10vw, 5.65rem);
-  font-weight: 400;
-  letter-spacing: -0.075em;
-  line-height: 1.05;
+  font-size: clamp(2.2rem, 8.1vw, 4.05rem);
+  font-weight: 520;
+  letter-spacing: -0.062em;
+  line-height: 1.08;
 }
 
 .hero-copy h1 em {
@@ -137,63 +137,38 @@ input:-webkit-autofill:focus {
   max-width: 700px;
   margin: 0;
   color: var(--text-soft);
-  font-size: clamp(1.35rem, 4.6vw, 2rem);
+  font-size: clamp(1.12rem, 4.1vw, 1.55rem);
   font-weight: 400;
   letter-spacing: -0.045em;
-  line-height: 1.52;
+  line-height: 1.55;
 }
 
-.signal-card,
 .access-card {
   border: 1px solid var(--line);
-  border-radius: 28px;
+  border-radius: 23px;
   background: var(--surface);
 }
 
-.signal-card {
-  display: grid;
-  grid-template-columns: 44px 1fr auto;
-  gap: 1rem;
-  align-items: start;
-  margin-bottom: 1rem;
-  padding: 1.1rem;
-}
-
-.signal-card img {
-  border-radius: 12px;
-}
-
-.signal-title {
-  color: var(--text);
-  font-size: clamp(1rem, 3.2vw, 1.2rem);
-  font-weight: 700;
-  letter-spacing: -0.03em;
-}
-
-.signal-card p,
 .access-heading p,
 .form-message,
-.closing-line,
 .landing-footer {
   color: var(--text-dim);
 }
 
-.signal-card p,
 .access-heading p {
   margin: 0.2rem 0 0;
-  font-size: clamp(1rem, 3.5vw, 1.25rem);
+  font-size: clamp(1rem, 3.1vw, 1.16rem);
   letter-spacing: -0.035em;
   line-height: 1.38;
 }
 
-.signal-card > span,
 .access-heading > span {
   color: var(--text-faint);
   font-size: 1rem;
 }
 
 .access-card {
-  padding: clamp(1rem, 4vw, 1.55rem);
+  padding: clamp(1rem, 3.5vw, 1.3rem);
 }
 
 .access-heading {
@@ -220,9 +195,10 @@ input:-webkit-autofill:focus {
 .access-heading h2 {
   margin: 0;
   color: var(--text);
-  font-size: clamp(1rem, 3.2vw, 1.2rem);
-  font-weight: 700;
+  font-size: clamp(1.02rem, 3.1vw, 1.16rem);
+  font-weight: 650;
   letter-spacing: -0.035em;
+  text-transform: lowercase;
 }
 
 .waitlist-form {
@@ -235,8 +211,8 @@ input:-webkit-autofill:focus {
 .copy-link {
   width: 100%;
   border-radius: 13px;
-  padding: 1.05rem 1.1rem;
-  font-size: clamp(1.05rem, 3.5vw, 1.35rem);
+  padding: 0.95rem 1.05rem;
+  font-size: clamp(1rem, 3.2vw, 1.16rem);
   letter-spacing: -0.03em;
 }
 
@@ -256,7 +232,7 @@ input:-webkit-autofill:focus {
   border: 0;
   background: var(--button);
   color: var(--button-text);
-  font-weight: 700;
+  font-weight: 650;
   cursor: pointer;
 }
 
@@ -280,64 +256,31 @@ input:-webkit-autofill:focus {
   color: var(--warning);
 }
 
-.closing-line {
-  margin: 1.65rem 0 4rem;
-  text-align: center;
-  font-size: clamp(1rem, 3.6vw, 1.3rem);
-  letter-spacing: -0.03em;
-}
-
 .landing-footer {
-  display: flex;
-  justify-content: space-between;
-  gap: 1.25rem;
-  border-top: 1px solid rgba(168, 196, 154, 0.14);
-  padding-top: 1.55rem;
+  margin-top: clamp(3rem, 8vw, 4.4rem);
   font-size: clamp(0.92rem, 3vw, 1.05rem);
-}
-
-.landing-footer nav {
-  display: flex;
-  gap: 0.45rem;
-  white-space: nowrap;
-}
-
-.landing-footer a {
-  color: inherit;
-  text-decoration: none;
-}
-
-.landing-footer a:hover {
-  color: var(--text-soft);
 }
 
 @media (max-width: 520px) {
   .landing-shell {
-    padding-top: 4.15rem;
+    padding-top: 3.3rem;
   }
 
   .brand-row {
-    margin-bottom: 4.5rem;
+    margin-bottom: 4.2rem;
   }
 
   .brand-mark {
-    width: 52px;
-    height: 52px;
-    border-radius: 16px;
+    width: 46px;
+    height: 46px;
+    border-radius: 14px;
   }
 
-  .signal-card,
   .access-heading {
     grid-template-columns: 44px 1fr;
   }
 
-  .signal-card > span,
   .access-heading > span {
     display: none;
-  }
-
-  .landing-footer {
-    align-items: flex-start;
-    flex-direction: column;
   }
 }

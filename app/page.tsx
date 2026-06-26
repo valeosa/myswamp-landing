@@ -49,7 +49,7 @@ export default function Home() {
 
   const copyLink = async () => {
     try {
-      await navigator.clipboard.writeText("https://myswamp.space");
+      await navigator.clipboard.writeText(window.location.origin);
       setCopyState("copied");
       window.setTimeout(() => setCopyState("idle"), 1800);
     } catch {
@@ -68,8 +68,8 @@ export default function Home() {
           <Image
             src="/swamp-favicon.png"
             alt=""
-            width={58}
-            height={58}
+            width={48}
+            height={48}
             priority
             className="brand-mark"
           />
@@ -94,22 +94,13 @@ export default function Home() {
           </p>
         </div>
 
-        <div className="signal-card" aria-label="mySwamp promise">
-          <Image src="/swamp-favicon.png" alt="" width={44} height={44} />
-          <div>
-            <div className="signal-title">One frog. No second brain.</div>
-            <p>Dump the noise. Let the swamp surface what comes next.</p>
-          </div>
-          <span aria-hidden="true">now</span>
-        </div>
-
         <section className="access-card" aria-label="early access">
           <div className="access-heading">
             <div className="mail-mark" aria-hidden="true">
               @
             </div>
             <div>
-              <h2>{isDone ? "Thanks for joining the waitlist" : "Be first into the swamp"}</h2>
+              <h2>{isDone ? "Thanks for joining the waitlist" : "one frog. no second brain."}</h2>
               <p>
                 {isDone
                   ? "Check your email to confirm your spot. In the meantime, pass the waterline to someone who needs one frog."
@@ -123,7 +114,7 @@ export default function Home() {
             <form onSubmit={handleSubmit} noValidate className="waitlist-form">
               <input
                 type="email"
-                placeholder="myswamp@somewhere.com"
+                placeholder="you@somewhere.com"
                 value={email}
                 onChange={(event) => {
                   setEmail(event.target.value);
@@ -162,19 +153,8 @@ export default function Home() {
           )}
         </section>
 
-        <p className="closing-line">because one meaningful thing is enough.</p>
-
         <footer className="landing-footer">
           <span>mySwamp © 2026</span>
-          <nav aria-label="legal links">
-            <a href="/terms">terms</a>
-            <span>·</span>
-            <a href="/privacy">privacy</a>
-            <span>·</span>
-            <a href="https://threads.net/@myswamp" rel="noreferrer">
-              threads
-            </a>
-          </nav>
         </footer>
       </section>
     </main>
