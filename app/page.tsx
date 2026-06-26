@@ -292,7 +292,19 @@ text-align: center;
 
         
         </section>
-
+ <div className="wrap">
+        <div className={`topbar ${visible ? "visible" : ""}`}>
+          <div className="mark">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <ellipse cx="8" cy="7" rx="2.4" ry="2.7" fill="#d4c9b0" />
+              <ellipse cx="16" cy="7" rx="2.4" ry="2.7" fill="#d4c9b0" />
+              <circle cx="8" cy="6.6" r="1" fill="#0b1710" />
+              <circle cx="16" cy="6.6" r="1" fill="#0b1710" />
+              <path d="M4 13c0-2.2 3.6-4 8-4s8 1.8 8 4-3.6 5-8 5-8-2.8-8-5Z" fill="#d4c9b0" />
+            </svg>
+          </div>
+          <div className="wordmark">mySwamp</div>
+        </div>
         
         <div className="divider" />
 
