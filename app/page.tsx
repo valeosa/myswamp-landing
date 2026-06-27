@@ -101,10 +101,10 @@ export default function Home() {
               @
             </div>
             <div>
-              <h2>{isDone ? "Thanks for joining the waitlist" : "one less decision every day."}</h2>
+              <h2>{isDone ? "thanks for joining the waitlist!" : "one less decision every day."}</h2>
               <p>
                 {isDone
-                  ? "check your email to confirm your spot. In the meantime, pass the waterline to someone who needs one frog."
+                  ? "check your email to confirm your spot. in the meantime, you can pass it on to someone with too many tabs open."
                   : "no priority sorting. no tagging. no deciding which list to open first. just one frog."}
               </p>
             </div>
