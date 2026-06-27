@@ -78,14 +78,14 @@ export default function Home() {
 
         <div className="hero-copy">
           <h1>
-            modern productivity apps have become a chore.{"\u00a0"}
-            <em>so I'm building a place.</em>
+            you don't need another task manager.{"\u00a0"}
+            <em>you need one less decision to make.</em>
           </h1>
         
           <p>
-            instead of just managing tasks, you dump them into the swamp,
-            and out comes a single, undeniable &lsquo;frog&rsquo;: the
-            exact thing you need to do next.
+            Most to-do apps hand you a list and leave the hardest part to you — picking what actually 
+             matters right now. mySwamp does that part. 
+             Dump everything in, get back one task.
           </p>
 
           <p>
@@ -93,8 +93,6 @@ export default function Home() {
            leaving your mind clear. 
  </p>
 
-<p>no guilt. no dashboards. no streaks. just each moment.
-</p>
         </div>
 
         <section className="access-card" aria-label="early access">
@@ -103,11 +101,11 @@ export default function Home() {
               @
             </div>
             <div>
-              <h2>{isDone ? "Thanks for joining the waitlist" : "Not a second brain, but a second place."}</h2>
+              <h2>{isDone ? "Thanks for joining the waitlist" : "One less decision every day."}</h2>
               <p>
                 {isDone
                   ? "check your email to confirm your spot. In the meantime, pass the waterline to someone who needs one frog."
-                  : "get early access and confirm your spot when mySwamp opens."}
+                  : "No priority sorting. No tagging. No deciding which list to open first. Just one frog."}
               </p>
             </div>
           </div>
