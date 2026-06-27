@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   title: "mySwamp",
   description: "dump your tasks. get your frog.",
   openGraph: {
-
+images: ["/og-image.png"],
   },
 };
 
