@@ -83,8 +83,8 @@ export default function Home() {
           </h1>
         
           <p>
-             to-do apps give you a place to put everything — a list, a calendar — and leave the hardest part to you: 
-             picking what actually matters right now.mySwamp does that part. 
+             to-do apps give you a place to neatly put everything and leave the hardest part to you: 
+             picking what actually matters right now. mySwamp does that part. 
              Dump everything in, get back the one to do next.
           </p>
 
