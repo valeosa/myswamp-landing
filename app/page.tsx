@@ -83,7 +83,7 @@ export default function Home() {
           </h1>
         
           <p>
-             To-do apps hand you a calendar and leave the hardest part to you — picking what actually 
+             to-do apps hand you a calendar and leave the hardest part to you — picking what actually 
              matters right now. mySwamp does that part. 
              Dump everything in, get back the one to do next.
           </p>
@@ -101,11 +101,11 @@ export default function Home() {
               @
             </div>
             <div>
-              <h2>{isDone ? "Thanks for joining the waitlist" : "One less decision every day."}</h2>
+              <h2>{isDone ? "Thanks for joining the waitlist" : "one less decision every day."}</h2>
               <p>
                 {isDone
                   ? "check your email to confirm your spot. In the meantime, pass the waterline to someone who needs one frog."
-                  : "No priority sorting. No tagging. No deciding which list to open first. Just one frog."}
+                  : "no priority sorting. no tagging. no deciding which list to open first. just one frog."}
               </p>
             </div>
           </div>
