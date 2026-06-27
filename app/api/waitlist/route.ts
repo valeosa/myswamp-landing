@@ -44,7 +44,7 @@ export async function POST(request: Request) {
     if (existing?.status === "confirmed") {
       return Response.json({
         status: "confirmed",
-        message: "you're already in the swamp 🐸",
+        message: "you're already in the swamp :)",
       });
     }
 
