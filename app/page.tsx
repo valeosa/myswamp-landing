@@ -83,9 +83,9 @@ export default function Home() {
           </h1>
         
           <p>
-             Most to-do apps hand you a calendar and leave the hardest part to you — picking what actually 
+             To-do apps hand you a calendar and leave the hardest part to you — picking what actually 
              matters right now. mySwamp does that part. 
-             Dump everything in, get back one task.
+             Dump everything in, get back the one to do next.
           </p>
 
           <p>
