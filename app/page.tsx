@@ -83,14 +83,14 @@ export default function Home() {
           </h1>
         
           <p>
-             Most to-do apps hand you a list and leave the hardest part to you — picking what actually 
+             Most to-do apps hand you a calendar and leave the hardest part to you — picking what actually 
              matters right now. mySwamp does that part. 
              Dump everything in, get back one task.
           </p>
 
           <p>
             two options: done or not yet. either way, it sinks out of sight, 
-           leaving your mind and plate clear. 
+           leaving your mind clear. 
  </p>
 
         </div>
