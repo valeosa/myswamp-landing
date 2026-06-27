@@ -85,7 +85,7 @@ export default function Home() {
           <p>
              Most to-do apps hand you a list and leave the hardest part to you — picking what actually 
              matters right now. mySwamp does that part. 
-             Dump everything in, get back one task: the 'frog'..
+             Dump everything in, get back one task.
           </p>
 
           <p>
