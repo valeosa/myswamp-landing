@@ -78,19 +78,19 @@ export default function Home() {
 
         <div className="hero-copy">
           <h1>
-            you don't need another task manager.{"\u00a0"}
-            <em>you need one less decision to make.</em>
+           you have enough decisions today.{"\u00a0"}
+            <em>picking your next task shouldn’t be one of them.</em>
           </h1>
         
           <p>
-            Most to-do apps hand you a list and leave the hardest part to you — picking what actually 
+             Most to-do apps hand you a list and leave the hardest part to you — picking what actually 
              matters right now. mySwamp does that part. 
-             Dump everything in, get back one task.
+             Dump everything in, get back one task: the 'frog'..
           </p>
 
           <p>
             two options: done or not yet. either way, it sinks out of sight, 
-           leaving your mind clear. 
+           leaving your mind and plate clear. 
  </p>
 
         </div>
