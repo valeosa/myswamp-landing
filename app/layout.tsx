@@ -8,9 +8,6 @@ export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: "mySwamp",
   description: "dump your tasks. get your frog.",
-  openGraph: {
-images: ["/og-image.png"],
-  },
 };
 
 export default function RootLayout({
